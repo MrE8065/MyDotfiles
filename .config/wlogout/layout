@@ -1,0 +1,20 @@
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text": "Suspend"
+}
+{
+    "label" : "reboot",
+    "action" : "systemctl reboot",
+    "text": "Reboot"
+}
+{
+    "label" : "logout",
+    "action" : "pkill Hyprland || loginctl terminate-user $USER",
+    "text": "Logout"
+}
+{
+    "label" : "shutdown",
+    "action" : "shutdown now",
+    "text": "Shutdown"
+}

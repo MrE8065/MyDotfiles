@@ -1,0 +1,287 @@
+@import url('../../../.cache/wal/colors-waybar.css');
+
+/* ========================================
+   VARIABLES CSS PERSONALIZADAS
+   ======================================== */
+@define-color mpris-album-art-overlay alpha(@background, 0.55);
+@define-color mpris-button-hover alpha(@background, 0.50);
+@define-color text @color15;
+@define-color bg alpha(@background, 0.5);
+@define-color bg-hover alpha(@background, 0.8);
+@define-color mycolor @color9;
+@define-color border-color alpha(@mycolor, 0.15);
+@define-color critical-bg #ffb4a9;
+@define-color critical-text #680003;
+
+/* ========================================
+   ESTILOS GLOBALES
+   ======================================== */
+* {
+  outline: none;
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+/* ========================================
+   CONTROL CENTER
+   ======================================== */
+.control-center {
+  background-color: @bg;
+  color: @text;
+  border-radius: 20px;
+  border: 2px solid alpha(@color9, 0.1);
+}
+
+.control-center .notification-row {
+  background-color: transparent;
+}
+
+.control-center .notification-group {
+    background-color: transparent;
+}
+
+/* ========================================
+   WIDGETS - TÍTULO
+   ======================================== */
+.widget-title {
+  padding: unset;
+  margin: unset;
+  color: @text;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.widget-title > button {
+  padding: 0px 10px;
+  margin: unset;
+  margin-right: 20px;
+  margin-top: 3px;
+  font-size: initial;
+  color: @text;
+  text-shadow: none;
+  background: rgba(255, 85, 85, 0.3);
+  border: none;
+  box-shadow: none;
+  border-radius: 12px;
+  transition: all 0.7s ease;
+}
+
+.widget-title > button:hover {
+  border: none;
+  background: red/*rgba(255, 85, 85, 0.7)*/;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.65);
+  transition: all 0.7s ease;
+}
+
+/* ========================================
+   WIDGETS - ETIQUETA
+   ======================================== */
+.widget-label {
+  margin: 8px;
+}
+
+.widget-label > label {
+  font-size: 1.1rem;
+}
+
+/*========================================
+  WIDGETS - DO NOT DISTURB
+======================================== */
+.widget-dnd {
+  padding: 0 20px;
+  padding-top: 20px;
+  color: @text;
+}
+
+.widget-dnd > label {
+  color: @text;
+}
+
+.widget-dnd > switch {
+  background: alpha(@color1, 0.5);
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 2px;
+}
+
+.widget-dnd > switch:hover {
+  background: @color4;
+}
+
+.widget-dnd > switch:checked {
+  background: @color9;
+}
+
+.widget-dnd > switch:checked:hover {
+  background: @color10;
+}
+
+.widget-dnd > switch slider {
+  background: @color14;
+  border-radius: 6px;
+}
+
+
+/* ========================================
+   WIDGETS - MPRIS (REPRODUCTOR DE MEDIOS)
+   ======================================== */
+.widget-mpris .widget-mpris-player {
+  padding: 16px;
+  margin: 16px 20px;
+  background-color: @mpris-album-art-overlay;
+  border-radius: 12px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.widget-mpris .widget-mpris-player button {
+  color: @text;
+  text-shadow: none;
+  border-radius: 15px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  transition: all 0.5s ease;
+}
+
+.widget-mpris .widget-mpris-player button:not(.selected) {
+  background: transparent;
+  border: 2px solid transparent;
+}
+
+.widget-mpris .widget-mpris-player button:hover {
+  all: unset;
+  background: @bg-hover;
+  text-shadow: none;
+  border-radius: 15px;
+  border: 2px solid transparent;
+  padding: 5px;
+  margin: 5px;
+  transition: all 0.5s ease;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-subtitle {
+  font-size: 1.1rem;
+}
+
+.widget-mpris .widget-mpris-player > box > button:hover {
+  background-color: @mpris-button-hover;
+}
+
+/* ========================================
+   WIDGETS - BOTONES EN GRID
+   ======================================== */
+.widget-buttons-grid {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 8px;
+  margin: 10px;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background: transparent;
+  border-radius: 12px;
+  text-shadow: none;
+  /*box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.02);*/
+  transition: all 0.5s ease;
+  min-width: 0;
+  min-height: 0;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background: @color4;
+  /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);*/
+  transition: all 0.5s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background: @mycolor;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
+  color: @background;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button label {
+  font-size: 20px;
+  color: @color7;
+  transition: all 0.7s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover label {
+  font-size: 20px;
+  color: @text;
+  transition: all 0.7s ease;
+}
+
+/* ========================================
+   WIDGETS - MENÚ Y BARRA SUPERIOR
+   ======================================== */
+.widget-menubar > box > .menu-button-bar > button {
+  border: none;
+  background: transparent;
+}
+
+.topbar-buttons > button {
+  border: none;
+  background: transparent;
+}
+
+/* ========================================
+   CONTROLES DESLIZANTES
+   ======================================== */
+trough {
+  border-radius: 20px;
+  background: transparent;
+  box-shadow: 0 0 5px alpha(@color4, 0.3);
+}
+
+trough highlight {
+  padding: 5px;
+  background: @mycolor;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.7s ease;
+  border: none;
+}
+
+trough highlight:hover {
+  padding: 5px;
+  background: @mycolor;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+  transition: all 0.7s ease;
+}
+
+trough slider {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+}
+
+/* ========================================
+   WIDGETS - VOLUMEN Y BRILLO
+   ======================================== */
+.widget-volume {
+  background-color: transparent;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 12px;
+}
+
+.widget-backlight {
+  background-color: transparent;
+  padding: 8px;
+  margin: 8px;
+  border-radius: 12px;
+}

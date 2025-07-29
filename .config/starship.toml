@@ -1,0 +1,120 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = false
+
+format = """ 
+[](fg:yellow)\
+$os\
+[](bg:yellow fg:blue)\
+$username\
+[](bg:blue fg:green)\
+$directory\
+[ ](fg:green)\
+$git_branch\
+$git_status\
+$all\
+$character\
+"""
+
+[username]
+show_always = true
+format = '[$user ](bg:blue fg:black)'
+disabled = false
+
+[os]
+disabled = false
+style = 'bg:yellow fg:black'
+
+[os.symbols]
+Arch = " "
+Artix = " "
+CachyOS = " "
+Linux = " "
+Unknown = " "
+
+[cmd_duration]
+format = "[$duration](fg:red)"
+
+[directory]
+format = "[$path](bg:green fg:black)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[character]
+success_symbol = "[](bold blue)"
+error_symbol = "[✗](bold red)"
+disabled = false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+
+[git_branch]
+symbol = "  "
+format = '[$symbol($branch) ($version)]($style)'
+
+[git_commit]
+tag_symbol = '  '
+format = '[$symbol($version)]($style)'
+
+[c]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[conda]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[dart]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[docker_context]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[hostname]
+ssh_symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[java]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[kotlin]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[lua]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[memory_usage]
+symbol = " 󰍛 "
+format = '[$symbol($version)]($style)'
+
+[nodejs]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[package]
+symbol = " 󰏗 "
+format = '[$symbol($version)]($style)'
+
+[php]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[python]
+symbol = "  "
+format = '[$symbol($version)($virtualenv)]($style)'
+
+[rust]
+symbol = " 󱘗 "
+format = '[$symbol($version)]($style)'
+
+[gradle]
+symbol = "  "
+format = '[$symbol($version)]($style)'

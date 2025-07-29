@@ -1,0 +1,81 @@
+# Hypr #
+hypridle
+hyprlock
+hyprpicker
+hyprshot
+########
+
+
+# Network #
+network-manager-applet
+nm-connection-editor
+###########
+
+
+# GTK Themes #
+materia-gtk-theme
+bibata-cursor-theme-bin
+papirus-icon-theme
+nwg-look
+##############
+
+
+# Fonts #
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
+#########
+
+
+# File explorer #
+thunar
+tumbler
+gvfs
+#################
+
+
+# Walpapers #
+waypaper
+swww
+#############
+
+
+# Extra #
+wf-recorder
+wlogout
+wofi
+xdg-desktop-portal-gtk
+xdg-desktop-portal-hyprland
+swaync
+slurp
+checkupdates-with-aur
+waybar
+pavucontrol
+python-pywal16
+python-pywalfox
+ddcutil
+less
+#########
+
+
+# Terminal #
+zsh
+unzip
+starship
+ripgrep
+neovim
+lsd
+fastfetch
+htop
+#############
+
+
+# Apps #
+firefox
+spotify-launcher
+visual-studio-code-bin
+vlc
+vlc-plugins-all
+########

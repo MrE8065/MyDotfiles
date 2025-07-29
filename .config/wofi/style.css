@@ -1,0 +1,94 @@
+@import url(".cache/wal/colors-waybar.css");
+
+/* Global config */
+* {
+  font-family: "JetBrainsMono Nerd Font Propo";
+  font-size: 18px;
+  outline: none;
+  border: none;
+  text-shadow: none;
+  color: @cursor;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Main component */
+window {
+  all: unset;
+  padding: 20px;
+  border-radius: 0;
+  background-color: alpha(@background, 0.5);
+}
+
+#outer-box,
+#inner-box {
+  border: none;
+}
+
+#inner-box {
+  margin: 2px;
+  padding: 5px;
+}
+
+#scroll {
+    padding: 30px;
+}
+
+/* Search bar */
+#input {
+  all: unset;
+  margin: 20px;
+  margin-bottom: 0;
+  padding: 20px;
+  color: @cursor;
+  background-color: alpha(@color1, 0.5);
+  border-radius: 10px;
+}
+
+#input image,
+#input * {
+  border: none;
+  color: @cursor;
+  outline: none;
+}
+
+#input:focus {
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 10px alpha(@color4, 0.2), 0 0 0 1px alpha(@color4, 0.5);
+}
+
+/* Option text */
+#text {
+  margin: 5px;
+  border: none;
+  color: @cursor;
+  outline: none;
+}
+
+/* Item of the list */
+#entry {
+  border: none;
+  margin: 5px;
+  padding-left: 10px;
+}
+
+#entry arrow {
+  border: none;
+  color: @cursor;
+}
+
+/* selected states */
+#entry:selected {
+  background-color: alpha(@color4, 0.2);
+  border-radius: 20px;
+  box-shadow: 0 0 5px 10px alpha(@color4, 0.2), 0 0 0 1px alpha(@color4, 0.5);
+}
+
+#entry:selected #text {
+  color: @color12;
+}
+
+#entry:selected arrow {
+    color: @color12;
+}
