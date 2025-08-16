@@ -1,0 +1,59 @@
+# Check copydots!
+# https://rgithub.com/MrE8065/copydots/
+
+zshrc:
+  path: "~/.zshrc"
+  desc: "Zsh configuration file"
+  output: "."
+
+fastfetch:
+  path: "~/.config/fastfetch/"
+  desc: "Fastfetch configuration"
+
+gtk3:
+  path: "~/.config/gtk-3.0/"
+  desc: "GTK 3 configuration"
+
+gtk4:
+  path: "~/.config/gtk-4.0/"
+  desc: "GTK 4 configuration"
+
+hypr:
+  path: "~/.config/hypr/"
+  desc: "Hypr configuration"
+
+kitty:
+  path: "~/.config/kitty/"
+  desc: "Kitty terminal configuration"
+
+nvim:
+  path: "~/.config/nvim/"
+  desc: "Neovim configuration"
+
+swaync:
+  path: "~/.config/swaync/"
+  desc: "Swaync configuration"
+
+pywal:
+  path: "~/.config/wal/"
+  desc: "PyWal configuration"
+
+waybar:
+  path: "~/.config/waybar/"
+  desc: "Waybar configuration"
+
+waypaper:
+  path: "~/.config/waypaper/"
+  desc: "Waypaper configuration"
+
+wlogout:
+  path: "~/.config/wlogout/"
+  desc: "Wlogout configuration"
+
+wofi:
+  path: "~/.config/wofi/"
+  desc: "Wofi configuration"
+
+starship:
+  path: "~/.config/starship.toml"
+  desc: "Starship configuration"
