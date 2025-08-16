@@ -1,0 +1,60 @@
+name: 🐛 Bug Report
+description: Report a bug to help improve this repo
+title: "🐛 [Bug]: "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Bug Report
+        
+        Thank you for taking the time to report a bug! This helps improve this dotfiles for everyone.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Bug Severity
+      description: How severe is this bug?
+      options:
+        - "🟢 Low - Minor inconvenience"
+        - "🟠 Medium - Affects usability"
+        - "🔴 High - Fix ASAP"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Describe what you were trying to do when this bug occurred.
+      placeholder: "I was trying to open the notification center when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the bug
+      placeholder: |
+        1. Go to workspace 4
+        2. Open some app
+        4. Click Notification center button
+        5. Error occurs...
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-details
+    attributes:
+      label: Error Details (if any)
+      description: Copy and paste any error messages, stack traces, or console errors
+      placeholder: |
+        Error: Failed to load styles
+        at ImportantService.loadStyles (/app/src/services/important.js:123:15)
+        at load file /app/knowledge/load-styles
+      render: text
+    validations:
+      required: false

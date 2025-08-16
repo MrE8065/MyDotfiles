@@ -1,0 +1,22 @@
+name: 💡 Improvement Suggestion
+description: Suggest an improvement to this repo
+title: "💡 [Improvement]: "
+labels: ["enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Improvement Suggestion
+        
+        Thank you for taking the time to suggest an improvement! This helps improve this dotfiles for everyone.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Improvement Description
+      description: Describe the improvement you would like to see.
+      placeholder: "This could be improved by..."
+    validations:
+      required: true

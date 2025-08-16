@@ -1,0 +1,22 @@
+name: ❓ Question
+description: Ask a question about this repo
+title: "❓ [Question]: "
+labels: ["question"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Question
+        
+        Thank you for taking the time to ask a question! This helps improve this dotfiles for everyone.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Question Description
+      description: Describe the question you have.
+      placeholder: "How can I...?"
+    validations:
+      required: true
