@@ -66,6 +66,13 @@ Hi! This is my first rice, so if you find any errors or need help, feel free to 
 
 Here you can see how the system will look after the customization. Cool, right?
 
+<div align="center">
+  <img src="./images/final/final.png" width="40%">
+  <img src="./images/final/final2.png" width="40%">
+  <img src="./images/final/final3.png" width="40%">
+  <img src="./images/final/final4.png" width="40%">
+</div>
+
 
 <a id="how-to-install"></a>
 
