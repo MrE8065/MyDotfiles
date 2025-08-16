@@ -1,42 +1,38 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 
-format = """ 
-[](fg:yellow)\
+format = """
+[░▒▓](green)\
 $os\
-[](bg:yellow fg:blue)\
 $username\
-[](bg:blue fg:green)\
+[ ](green)\
 $directory\
-[ ](fg:green)\
-$git_branch\
-$git_status\
-$all\
 $character\
 """
+right_format = """$git_branch $git_status $git_commit $all $cmd_duration"""
 
 [username]
 show_always = true
-format = '[$user ](bg:blue fg:black)'
+format = '[$user ](bg:green)'
 disabled = false
 
 [os]
 disabled = false
-style = 'bg:yellow fg:black'
+style = 'bg:green'
 
 [os.symbols]
-Arch = " "
-Artix = " "
-CachyOS = " "
-Linux = " "
-Unknown = " "
+Arch = "  "
+Artix = "  "
+CachyOS = "  "
+Linux = "  "
+Unknown = "  "
 
 [cmd_duration]
-format = "[$duration](fg:red)"
+format = "[$duration]($style)"
 
 [directory]
-format = "[$path](bg:green fg:black)"
+format = "[$path]($style)"
 truncation_length = 2
 truncation_symbol = "…/"
 
@@ -53,14 +49,20 @@ disabled = false
 
 [git_branch]
 symbol = "  "
-format = '[$symbol($branch) ($version)]($style)'
+format = '[$symbol $branch (:$remote_branch)]($style)'
+
+[git_status]
+style = "bold blue"
+format = "[$modified$deleted$untracked$ahead_behind]($style) "
+modified = " "
+deleted = " "
+untracked = " "
+ahead = " "
+behind = " "
+up_to_date = " "
 
 [git_commit]
 tag_symbol = '  '
-format = '[$symbol($version)]($style)'
-
-[c]
-symbol = "  "
 format = '[$symbol($version)]($style)'
 
 [conda]
@@ -89,10 +91,6 @@ format = '[$symbol($version)]($style)'
 
 [lua]
 symbol = "  "
-format = '[$symbol($version)]($style)'
-
-[memory_usage]
-symbol = " 󰍛 "
 format = '[$symbol($version)]($style)'
 
 [nodejs]

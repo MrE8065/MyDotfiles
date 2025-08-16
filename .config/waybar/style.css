@@ -49,13 +49,15 @@ tooltip {
 #clock,
 #bluetooth,
 #battery,
-#tray,
+/*#tray,*/
 #mpris,
 #pulseaudio,
 #custom-notification,
 #custom-pacman,
 #custom-expand,
-#custom-brightness {
+#custom-brightness,
+#network,
+#power-profiles-daemon {
   padding: 8px 12px;
   margin: 0 2px;
   border-radius: 8px;
@@ -68,13 +70,15 @@ tooltip {
 #clock:hover,
 #bluetooth:hover,
 #battery:hover,
-#tray:hover,
+/*#tray:hover,*/
 #mpris:hover,
 #pulseaudio:hover,
 #custom-notification:hover,
 #custom-pacman:hover,
 #custom-expand:hover,
-#custom-brightness:hover {
+#custom-brightness:hover,
+#network:hover,
+#power-profiles-daemon:hover {
   color: @color4;
   background: alpha(@color4, 0.1);
   border-color: alpha(@color4, 0.3);
@@ -183,6 +187,10 @@ tooltip {
   margin-bottom: 15px;
 }
 
+#network {
+  padding-right: 20px;
+}
+
 /* ===== CUSTOM MODULES ===== */
 /* Custom expand */
 #custom-expand {
@@ -238,4 +246,10 @@ tooltip {
 #custom-colorpicker:hover {
   background: alpha(@color4, 0.1);
   border-color: alpha(@color4, 0.3);
+}
+
+/* Separator */
+#custom-separator {
+  color: @cursor;
+  font-weight: bold;
 }

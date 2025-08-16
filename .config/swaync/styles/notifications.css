@@ -1,7 +1,7 @@
 @import url('../../../.cache/wal/colors-waybar.css');
 
 /* ========================================
-   VARIABLES CSS PERSONALIZADAS
+   VARIABLES
    ======================================== */
 @define-color text @color15;
 @define-color bg alpha(@background, 0.1);
@@ -10,7 +10,7 @@
 @define-color critical-text #680003;
 
 /* ========================================
-   ESTILOS GLOBALES
+   GLOBAL STYLES
    ======================================== */
 * {
   outline: none;
@@ -18,10 +18,10 @@
 }
 
 /* ========================================
-   NOTIFICACIONES - ESTILOS BASE
+   NOTIFICATIONS - BASE STYLES
    ======================================== */
 .notification {
-  background: alpha(@mycolor, 0.5);
+  background: alpha(@mycolor, 0.3);
 }
 
 .notification-content {
@@ -33,7 +33,7 @@
 }
 
 /* ========================================
-   NOTIFICACIONES - CONTROL CENTER
+   NOTIFICATIONS - CONTROL CENTER
    ======================================== */
 .control-center .notification-row .notification-background {
     background: transparent;
@@ -63,10 +63,10 @@
 }
 
 /* ========================================
-   NOTIFICACIONES - FLOATING
+   NOTIFICATIONS - FLOATING
    ======================================== */
 .floating-notifications.background {
-  background: unset;
+  background: transparent;
 }
 
 .floating-notifications .notification-row .notification-background .notification box,
@@ -83,6 +83,10 @@
 
 .floating-notifications .notification-default-action:hover {
     background-color: unset;
+}
+
+.floating-notifications .notification-default-action {
+  background-color: transparent;
 }
 
 /* ========================================

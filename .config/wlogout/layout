@@ -1,20 +1,16 @@
 {
-    "label" : "suspend",
-    "action" : "systemctl suspend",
-    "text": "Suspend"
+  "label" : "suspend",
+  "action" : "systemctl suspend"
 }
 {
-    "label" : "reboot",
-    "action" : "systemctl reboot",
-    "text": "Reboot"
+  "label" : "shutdown",
+  "action" : "shutdown now"
 }
 {
-    "label" : "logout",
-    "action" : "pkill Hyprland || loginctl terminate-user $USER",
-    "text": "Logout"
+  "label" : "reboot",
+  "action" : "systemctl reboot"
 }
 {
-    "label" : "shutdown",
-    "action" : "shutdown now",
-    "text": "Shutdown"
+  "label" : "logout",
+  "action" : "pkill Hyprland || loginctl terminate-user $USER"
 }

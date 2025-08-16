@@ -8,29 +8,16 @@
   border: none;
   text-shadow: none;
   color: @cursor;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
 }
 
 /* Main component */
 window {
-  all: unset;
-  padding: 20px;
-  border-radius: 0;
-  background-color: alpha(@background, 0.5);
-}
-
-#outer-box,
-#inner-box {
-  border: none;
-}
-
-#inner-box {
-  margin: 2px;
-  padding: 5px;
+  background-color: alpha(@background, 0.7);;
 }
 
 #scroll {
-    padding: 30px;
+  padding-top: 20px;
 }
 
 /* Search bar */
@@ -38,7 +25,7 @@ window {
   all: unset;
   margin: 20px;
   margin-bottom: 0;
-  padding: 20px;
+  padding: 10px;
   color: @cursor;
   background-color: alpha(@color1, 0.5);
   border-radius: 10px;
@@ -68,9 +55,9 @@ window {
 
 /* Item of the list */
 #entry {
-  border: none;
   margin: 5px;
-  padding-left: 10px;
+  padding: 5px 20px;
+  /*padding-left: 10px;*/
 }
 
 #entry arrow {
@@ -81,8 +68,9 @@ window {
 /* selected states */
 #entry:selected {
   background-color: alpha(@color4, 0.2);
-  border-radius: 20px;
-  box-shadow: 0 0 5px 10px alpha(@color4, 0.2), 0 0 0 1px alpha(@color4, 0.5);
+  border-radius: 10px;
+  box-shadow: 0 0 5px 3px alpha(@color4, 0.2);
+  margin-left: 30px;
 }
 
 #entry:selected #text {
@@ -90,5 +78,5 @@ window {
 }
 
 #entry:selected arrow {
-    color: @color12;
+  color: @color12;
 }

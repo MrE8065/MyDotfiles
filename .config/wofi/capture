@@ -1,0 +1,10 @@
+[config]
+allow_images=true
+show=dmenu
+width=400
+height=200
+hide_scroll=true
+normal_window=true
+valign=center
+content_halign=center
+hide_search=true
