@@ -1,166 +1,242 @@
 #!/bin/bash
 
-# Welcome to my dotfiles installer :)
+# ----------------------------------------------------------
+# Load the library and packages list
+# ----------------------------------------------------------
 
-clear
+source ./installation/lib.sh
+source ./installation/packages.sh
 
-### Displaying welcome message ###
 
-echo -e "\n\t=== === === === === === === === === === === "
-echo -e "\t=== Welcome to my dotfiles installer :) ==="
-echo -e "\t=== === === === === === === === === === ===\n\n"
+# ----------------------------------------------------------
+# Displaying welcome message
+# ----------------------------------------------------------
 
-##################################
+welcome_message
 
 sleep 1
 clear
 
-### Ask if the user wants to do a backup of the current .config folder ###
 
-read -p "Do you want to backup your current .config directory? (y/n, default: y): " backup_choice
+# ----------------------------------------------------------
+# Ask if the user wants to do a backup of the current .config folder
+# ----------------------------------------------------------
+
+info_message "Do you want to backup your current .config directory? (y/n, default: y): "
+read backup_choice
 backup_choice=${backup_choice:-y}  # Default to 'y' if empty
 if [[ "$backup_choice" == "y" ]]; then
-  cp -r ~/.config ~/config_backup
-  echo "Backup of .config created at ~/config_backup"
+  cp -a ~/.config ~/config_backup
+  success_message "Backup of .config created at ~/config_backup"
 fi
-
-##########################################################################
 
 sleep 1
 clear
 
-### Ask the user if wants to update the mirrorlist ###
-read -p "Do you to update the mirrorlist to use the 10 best servers of your country? (y/n, default:y): " mirror_choice
-mirror_choice=${mirror_choice:-y} # Default to 'y' if empty
+
+# ----------------------------------------------------------
+# Ask if the user wants to update the mirrorlist
+# ----------------------------------------------------------
+
+info_message "Do you want to update the mirrorlist to use the 10 best servers of your country? (y/n, default:y): "
+read mirror_choice
+mirror_choice=${mirror_choice:-y}
 
 if [[ "$mirror_choice" == "y" ]]; then
-    read -p "Specify you country (country name, default: Spain): " country_choice
-    country_choice=${country_choice:-Spain} # Default to 'Spain' if empty
-	  pacman -S --needed reflector
-	  sudo reflector --country "$country_choice" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
+  sudo pacman -S --needed reflector
+  while true; do
+    clear
+    info_message "Specify your country (country name):"
+    read country_choice
+    
+    if reflector --list-countries 2>/dev/null | grep -qi "^${country_choice}"; then
+      info_message "Updating mirrorlist for $country_choice..."
+      if sudo reflector --country "$country_choice" --latest 10 --sort rate --save /etc/pacman.d/mirrorlist; then
+        success_message "Mirrorlist updated successfully!"
+        break
+      else
+        error_message "Error updating mirrorlist. Please try again."
+      fi
+    else
+      error_message "'$country_choice' is not a valid country name."
+      sleep 1
+      info_message "Would you like to try again? (y/n, default:y): "
+      read retry_choice
+      retry_choice=${retry_choice:-y}
+      if [[ "$retry_choice" != "y" ]]; then
+        info_message "Skipping mirrorlist update."
+        break
+      fi
+    fi
+  done
 fi
-
-######################################################
 
 sleep 1
 clear
 
-### Check if yay is installed. If not, installs it ###
+
+# ----------------------------------------------------------
+# Check if yay is installed. If not, installs it
+# ----------------------------------------------------------
 
 if command -v yay > /dev/null; then
-  echo "yay is installed. Skipping installation"
+  success_message "yay is installed. Skipping installation"
 else
-  echo "yay is not installed. Installing..."
+  error_message "yay is not installed. Installing..."
   sudo pacman -S --needed base-devel less
-  SCRIPT=$(realpath "$0")
-  temp_path=$(dirname "$SCRIPT")
+  whereami=$(pwd)
   git clone https://aur.archlinux.org/yay.git ~/Downloads/yay
   cd ~/Downloads/yay
   makepkg -si
-  cd $temp_path
-  echo "yay has been installed successfully"
+  cd $whereami
+  rm -rf ~/Downloads/yay
+  success_message "yay has been installed successfully"
 fi
 
-######################################################
-
 sleep 1
 clear
 
-### Install packages ###
 
-echo "Installing packages...."
+# ----------------------------------------------------------
+# Install packages
+# ----------------------------------------------------------
+
+info_message "Installing packages...."
 
 # Hypr packages
-yay -S- -needed hypridle hyprlock hyprpicker hyprshot
+installPackages "${hypr[@]}"
 
 # Terminal
-yay -S --needed zsh unzip starship ripgrep neovim lsd fastfetch htop
+installPackages "${terminal[@]}"
 
 # Network
-yay -S --needed network-manager-applet nm-connection-editor
+installPackages "${network[@]}"
 
 # File explorer
-yay -S --needed thunar tumbler gvfs
+installPackages "${file_explorer[@]}"
 
 # Wallpapers
-yay -S --needed waypaper swww
+installPackages "${wallpapers[@]}"
+
+# Apps
+installPackages "${apps[@]}"
 
 # Various
-yay -S --needed wlogout wofi swaync waybar pavucontrol wf-recorder slurp checkupdates-with-aur python-pywal16 python-pywalfox ddcutil xdg-desktop-portal-gtk xdg-desktop-portal-hyprland
+installPackages "${various[@]}"
 
 # GTK Themes
-yay -S --needed materia-gtk-theme bibata-cursor-theme-bin papirus-icon-theme nwg-look
+installPackages "${gtk_themes[@]}"
 
 # Fonts
-yay -S --needed ttf-jetbrains-mono-nerd noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
+installPackages "${fonts[@]}"
 
-########################
+success_message "Packages installed successfully."
 
 sleep 1
 clear
 
-### Apply oh-my-zsh ###
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+# ----------------------------------------------------------
+# Apply oh-my-zsh and plugins
+# ----------------------------------------------------------
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Applying plugins
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 
-#######################
+success_message "Oh My Zsh and plugins installed successfully."
 
 sleep 1
 clear
 
-### Ask the user if wants to install laptop packages ###
 
-read -p "Do you want to install the laptop packages (bluetooth, and power-plans)? (y/n, default:n): " laptop_choice
+# ----------------------------------------------------------
+# Download and apply plymouth boot animation
+# ----------------------------------------------------------
+
+git clone https://github.com/MrE8065/PSLinux.git ~
+sudo cp -r ~/PSLinux/pslinux /usr/share/themes
+sudo plymouth-set-default-theme -R pslinux
+
+
+# ----------------------------------------------------------
+# Apply sddm theme
+# ----------------------------------------------------------
+
+sudo tee /etc/sddm.conf > /dev/null << 'EOF'
+[Theme]
+Current=silent
+
+[General]
+InputMethod=qtvirtualkeyboard
+GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
+EOF
+
+
+# ----------------------------------------------------------
+# Ask the user if wants to install laptop packages
+# ----------------------------------------------------------
+
+info_message "Do you want to install the laptop packages (bluetooth and power-profiles)? (y/n, default:n): "
+read laptop_choice
 laptop_choice=${laptop_choice:-n} # Default to 'n' if empty
 
 if [[ "$laptop_choice" == "y" ]]; then
-	yay -S --needed blueman power-profiles-daemon
+	installPackages "blueman power-profiles-daemon"
   systemctl enable bluetooth
+  success_message "Laptop packages installed and Bluetooth service enabled."
 fi
-
-########################################################
 
 sleep 1
 clear
 
-### Optional apps ###
 
-read -p "Do you want to install the optional apps? (y/n, default:y): " apps_choice
+# ----------------------------------------------------------
+# Optional apps
+# ----------------------------------------------------------
+
+info_message "Do you want to install the optional apps? (y/n, default:y): "
+read apps_choice
 apps_choice=${apps_choice:-y} # Defaults to 'y' if empty
 if [[ "$apps_choice" == "y" ]]; then
-	yay -S --needed firefox spotify-launcher visual-studio-code-bin vlc vcl-plugins-all
-fi
+	installPackages "firefox spotify-launcher visual-studio-code-bin github-desktop-plus-bin gnome-keyring"
+  success_message "Optional apps installed successfully."
 
-#####################
+  # Install Spicetify for Spotify customization
+  curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+  success_message "Spicetify has been installed successfully."
+fi
 
 sleep 1
 clear
 
-### Copying the config files ###
+
+# ----------------------------------------------------------
+# Copying the config files
+# ----------------------------------------------------------
+
+info_message "Copying config files..."
 
 cp -r ~/MyDotfiles/wallpapers ~/
-cp -a ~/MyDotfiles/.config/* ~/.config
+cp -a ~/MyDotfiles/.config ~/.config
 cp ~/MyDotfiles/.zshrc ~/
 
-################################
+success_message "Config files copied successfully."
 
 
-### Changing the wallpaper and colors ###
+# ----------------------------------------------------------
+# Changing the wallpaper and colors
+# ----------------------------------------------------------
 
 waypaper --wallpaper ~/wallpapers/GNU-LINUX.png
 sh ~/.config/waypaper/change.sh ~/wallpapers/GNU-LINUX.png
 
-#########################################
 
+# ----------------------------------------------------------
+# Finish message
+# ----------------------------------------------------------
 
-notify-send "Welcome, $USER" "Thank you for downloading my Dotfiles :)"
-
-echo -e "\n\tChanging shell to zsh"
-chsh -s $(which zsh)
-
-echo "Finished customizations. Restart the machine to enjoy your new customization :)"
+finish_setup
