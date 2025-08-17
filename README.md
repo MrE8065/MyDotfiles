@@ -212,9 +212,9 @@ That been said, to install, simply execute this commands:
   Lockscreen. Uses the current wallpaper from Pywal to generate the background and colors, displays a greeting with your username.
 
   <div align="center">
-    <img src="./images/hyprlock/hyprlock.png" width = "30%">
-    <img src="./images/hyprlock/hyprlock2.png" width = "30%">
-    <img src="./images/hyprlock/hyprlock3.jpg" width = "30%">
+    <img src="./images/hyprlock/hyprlock.png" width = "45%">
+    <img src="./images/hyprlock/hyprlock2.png" width = "45%">
+    <img src="./images/hyprlock/hyprlock3.jpg" width = "45%">
   </div>
 
 </details>
