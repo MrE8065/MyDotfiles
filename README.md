@@ -259,7 +259,11 @@ Uses Lazyvim to create a simple, useful and functional IDE. Colorscheme follows 
   ## Overview
   Simple power menu. Shows a row with the different power options.
 
-  **I don't know how to screenshot wlogout :(**
+  <div align="center">
+    <img src="./images/wlogout/wlogout.png" width = "45%">
+    <img src="./images/wlogout/wlogout2.png" width = "45%">
+    <img src="./images/wlogout/wlogout3.png" width = "45%">
+</div>
 
 </details>
 
