@@ -17,7 +17,7 @@
 
 # 👋 Welcome!
 
-Hi! This is my first rice, so if you find any errors or need help, feel free to [create an issue](https://https://github.com/MrE8065/MyDotfiles/issues/new) and i will try to help :).
+Hi! This is my first rice, so if you find any errors or need help, feel free to [create an issue](https://github.com/MrE8065/MyDotfiles/issues/new) and i will try to help :).
 
 > [!TIP]
 > Check my little CLI tool to manage dotfiles, [copydots](https://github.com/MrE8065/copydots). I use it here!
