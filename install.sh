@@ -14,7 +14,7 @@ source ./scripts/packages.sh
 
 welcome_message
 
-sleep 1
+sleep 2
 clear
 
 
@@ -43,7 +43,7 @@ read mirror_choice
 mirror_choice=${mirror_choice:-y}
 
 if [[ "$mirror_choice" == "y" ]]; then
-  sudo pacman -S --needed reflector rsync
+  sudo pacman -S --needed --noconfirm reflector rsync
   while true; do
     clear
     info_message "Specify your country (country name):"
@@ -56,6 +56,7 @@ if [[ "$mirror_choice" == "y" ]]; then
         break
       else
         error_message "Error updating mirrorlist. Please try again."
+        sleep 1
       fi
     else
       error_message "'$country_choice' is not a valid country name."
@@ -83,7 +84,8 @@ if command -v yay > /dev/null; then
   success_message "yay is installed. Skipping installation"
 else
   error_message "yay is not installed. Installing..."
-  sudo pacman -S --needed base-devel less
+  sleep 1
+  sudo pacman -S --needed --noconfirm base-devel less
   whereami=$(pwd)
   git clone https://aur.archlinux.org/yay.git ~/Downloads/yay
   cd ~/Downloads/yay
@@ -102,6 +104,8 @@ clear
 # ----------------------------------------------------------
 
 info_message "Installing packages...."
+
+sleep 1
 
 # Hypr packages
 installPackages "${hypr[@]}"
@@ -140,6 +144,10 @@ clear
 # Apply oh-my-zsh and plugins
 # ----------------------------------------------------------
 
+info_message "Installing Oh My Zsh and plugins..."
+
+sleep 1
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # Applying plugins
@@ -157,14 +165,27 @@ clear
 # Download and apply plymouth boot animation
 # ----------------------------------------------------------
 
-git clone https://github.com/MrE8065/PSLinux.git ~
+info_message "Downloading and applying Plymouth boot animation..."
+
+sleep 1
+
+git clone https://github.com/MrE8065/PSLinux.git ~/PSLinux
 sudo cp -r ~/PSLinux/pslinux /usr/share/themes
 sudo plymouth-set-default-theme -R pslinux
+
+success_message "Plymouth boot animation applied successfully."
+
+sleep 1
+clear
 
 
 # ----------------------------------------------------------
 # Apply sddm theme
 # ----------------------------------------------------------
+
+info_message "Applying SDDM theme..."
+
+sleep 1
 
 sudo tee /etc/sddm.conf > /dev/null << 'EOF'
 [Theme]
@@ -174,6 +195,11 @@ Current=silent
 InputMethod=qtvirtualkeyboard
 GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
 EOF
+
+success_message "SDDM theme applied successfully."
+
+sleep 1
+clear
 
 
 # ----------------------------------------------------------
@@ -185,7 +211,7 @@ read laptop_choice
 laptop_choice=${laptop_choice:-n} # Default to 'n' if empty
 
 if [[ "$laptop_choice" == "y" ]]; then
-	installPackages "blueman power-profiles-daemon"
+	installPackages "${laptop[@]}"
   systemctl enable bluetooth
   success_message "Laptop packages installed and Bluetooth service enabled."
 fi
@@ -202,8 +228,14 @@ info_message "Do you want to install the optional apps? (y/n, default:y): "
 read apps_choice
 apps_choice=${apps_choice:-y} # Defaults to 'y' if empty
 if [[ "$apps_choice" == "y" ]]; then
-	installPackages "firefox spotify-launcher visual-studio-code-bin github-desktop-plus-bin gnome-keyring"
+	installPackages "${optional[@]}"
   success_message "Optional apps installed successfully."
+
+  sleep 1
+
+  info_message "Installing Spicetify for Spotify customization..."
+
+  sleep 1
 
   # Install Spicetify for Spotify customization
   curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
@@ -220,19 +252,33 @@ clear
 
 info_message "Copying config files..."
 
+sleep 1
+
 cp -r ~/MyDotfiles/wallpapers ~/
 cp -a ~/MyDotfiles/.config ~/.config
 cp ~/MyDotfiles/.zshrc ~/
 
 success_message "Config files copied successfully."
 
+sleep 1
+clear
+
 
 # ----------------------------------------------------------
 # Changing the wallpaper and colors
 # ----------------------------------------------------------
 
+info_message "Changing the wallpaper and colors..."
+
+sleep 1
+
 waypaper --wallpaper ~/wallpapers/GNU-LINUX.png
 sh ~/.config/waypaper/change.sh ~/wallpapers/GNU-LINUX.png
+
+success_message "Wallpaper and colors changed successfully."
+
+sleep 1
+clear
 
 
 # ----------------------------------------------------------

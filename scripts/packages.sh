@@ -71,3 +71,16 @@ fonts=(
   "noto-fonts-emoji"
   "noto-fonts-extra"
 )
+
+laptop=(
+  "blueman"
+  "power-profiles-daemon"
+)
+
+optional=(
+  "firefox"
+  "spotify-launcher"
+  "visual-studio-code-bin"
+  "github-desktop-plus-bin"
+  "gnome-keyring"
+)
