@@ -30,16 +30,16 @@ error_message() {
 welcome_message() {
   clear
   echo -e "${PURPLE}"
-  echo "\t___  ___     ______      _    __ _ _           "
-  echo "\t|  \/  |     |  _  \    | |  / _(_) |          "
-  echo "\t| .  . |_   _| | | |___ | |_| |_ _| | ___  ___ "
-  echo "\t| |\/| | | | | | | / _ \| __|  _| | |/ _ \/ __|"
-  echo "\t| |  | | |_| | |/ / (_) | |_| | | | |  __/\__ \\"
-  echo "\t\\_|  |_/\\__, |___/ \\___/ \\__|_| |_|_|\\___||___/"
-  echo "\t         __/ |                                 "
-  echo "\t        |___/                                  \n"
+  echo -e "\t___  ___     ______      _    __ _ _           "
+  echo -e "\t|  \/  |     |  _  \    | |  / _(_) |          "
+  echo -e "\t| .  . |_   _| | | |___ | |_| |_ _| | ___  ___ "
+  echo -e "\t| |\/| | | | | | | / _ \| __|  _| | |/ _ \/ __|"
+  echo -e "\t| |  | | |_| | |/ / (_) | |_| | | | |  __/\__ \\"
+  echo -e "\t\\_|  |_/\\__, |___/ \\___/ \\__|_| |_|_|\\___||___/"
+  echo -e "\t         __/ |                                 "
+  echo -e "\t        |___/                                  \n"
 
-  echo "\t      Welcome to my dotfiles installer :)"
+  echo -e "\t      Welcome to my dotfiles installer :)"
   echo -e "${NC}\n"
 }
 
