@@ -90,7 +90,8 @@ I recommend to take a look at the [Packages](./scripts/packages.sh) script to se
 That been said, to install, simply execute this commands:
 
 ```
-  git clone https://github.com/MrE8065/MyDotfiles.git ~
+  cd
+  git clone https://github.com/MrE8065/MyDotfiles.git
   cd ~/MyDotfiles
   chmod +x install.sh
   ./install.sh
