@@ -49,7 +49,7 @@ welcome_message() {
 
 finish_setup() {
   notify-send "Welcome, $USER" "Thank you for downloading my Dotfiles :)"
-  echo -e "\nChanging shell to zsh"
+  info_message "\nChanging shell to zsh"
   chsh -s $(which zsh)
   success_message "Finished customizations. Restart the machine to enjoy your new customization :)"
 }
