@@ -4,8 +4,8 @@
 # Load the library and packages list
 # ----------------------------------------------------------
 
-source ./installation/lib.sh
-source ./installation/packages.sh
+source ./scripts/lib.sh
+source ./scripts/packages.sh
 
 
 # ----------------------------------------------------------
@@ -43,7 +43,7 @@ read mirror_choice
 mirror_choice=${mirror_choice:-y}
 
 if [[ "$mirror_choice" == "y" ]]; then
-  sudo pacman -S --needed reflector
+  sudo pacman -S --needed reflector rsync
   while true; do
     clear
     info_message "Specify your country (country name):"
