@@ -52,6 +52,7 @@ finish_setup() {
   info_message "Changing shell to zsh"
   chsh -s $(which zsh)
   success_message "Finished customizations. Restart the machine to enjoy your new rice :)"
+  exit 0
 }
 
 # ----------------------------------------------------------
