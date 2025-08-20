@@ -49,7 +49,6 @@ various=(
   "waybar"
   "wf-recorder"
   "plymouth"
-  "sddm-silent-theme"
   "checkupdates-with-aur"
   "python-pywal16"
   "python-pywalfox"

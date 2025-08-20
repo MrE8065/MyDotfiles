@@ -180,14 +180,31 @@ clear
 
 
 # ----------------------------------------------------------
-# Apply sddm theme
+# Download and apply sddm theme
 # ----------------------------------------------------------
 
-info_message "Applying SDDM theme..."
+info_message "Do you want to install and apply the sddm theme? (y/n, default:y): "
+read sddm_choice
+sddm_choice=${sddm_choice:-y} # Default to 'y' if empty
 
-sleep 1
+if [[ "$sddm_choice" == "y" ]]; then
+  info_message "Downloading SDDM theme..."
 
-sudo tee /etc/sddm.conf > /dev/null << 'EOF'
+  sleep 1
+
+	installPackages "sddm-silent-theme"
+
+  sleep 1
+
+  success_message "SDDM theme downloaded successfully."
+
+  sleep 1
+
+  info_message "Applying SDDM theme..."
+
+  sleep 1
+
+  sudo tee /etc/sddm.conf > /dev/null << 'EOF'
 [Theme]
 Current=silent
 
@@ -196,7 +213,8 @@ InputMethod=qtvirtualkeyboard
 GreeterEnvironment=QML2_IMPORT_PATH=/usr/share/sddm/themes/silent/components/,QT_IM_MODULE=qtvirtualkeyboard
 EOF
 
-success_message "SDDM theme applied successfully."
+  success_message "SDDM theme applied successfully."
+fi
 
 sleep 1
 clear
