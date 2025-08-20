@@ -255,7 +255,7 @@ info_message "Copying config files..."
 sleep 1
 
 cp -r ~/MyDotfiles/wallpapers ~/
-cp -a ~/MyDotfiles/.config ~/.config
+cp -a ~/MyDotfiles/.config ~/
 cp ~/MyDotfiles/.zshrc ~/
 
 success_message "Config files copied successfully."
