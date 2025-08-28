@@ -291,7 +291,7 @@ info_message "Changing the wallpaper and colors..."
 sleep 1
 
 waypaper --wallpaper ~/wallpapers/GNU-LINUX.png
-sh ~/.config/waypaper/change.sh ~/wallpapers/GNU-LINUX.png
+wal -i ~/wallpapers/GNU-LINUX.png -n --cols16
 
 success_message "Wallpaper and colors changed successfully."
 
