@@ -4,7 +4,6 @@
    VARIABLES
    ======================================== */
 @define-color text @color15;
-@define-color bg alpha(@background, 0.1);
 @define-color mycolor @color9;
 @define-color critical-bg #ffb4a9;
 @define-color critical-text #680003;
@@ -90,9 +89,8 @@
 }
 
 /* ========================================
-   NOTIFICACIONES - CONTENIDO POR PRIORIDAD
+   NOTIFICATIONS - CONTENT BY PRIORITY
    ======================================== */
-/* Notificaciones normales y de baja prioridad */
 .control-center .notification-row .notification-background .notification.low .notification-content label,
 .control-center .notification-row .notification-background .notification.normal .notification-content label,
 .floating-notifications.background .notification-background .notification.low .notification-content label,
@@ -114,7 +112,7 @@
   color: @text;
 }
 
-/* Notificaciones críticas */
+
 .control-center .notification-row .notification-background .notification.critical .notification-content,
 .floating-notifications.background .notification-background .notification.critical .notification-content {
   background-color: @critical-bg;
@@ -132,7 +130,7 @@
 }
 
 /* ========================================
-   NOTIFICACIONES - TIPOGRAFÍA
+   NOTIFICATIONS - TEXT STYLES
    ======================================== */
 .control-center .notification-row .notification-background .notification .notification-content .summary,
 .floating-notifications.background .notification-background .notification .notification-content .summary {
@@ -158,7 +156,7 @@
 }
 
 /* ========================================
-   BOTÓN DE CERRAR NOTIFICACIONES
+   CLOSE NOTIFICATION BUTTON
    ======================================== */
 .control-center .notification-row .close-button,
 .floating-notifications.background .close-button {

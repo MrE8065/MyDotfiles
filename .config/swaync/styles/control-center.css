@@ -1,20 +1,14 @@
 @import url('../../../.cache/wal/colors-waybar.css');
 
 /* ========================================
-   VARIABLES CSS PERSONALIZADAS
+    VARIABLES
    ======================================== */
-@define-color mpris-album-art-overlay alpha(@background, 0.55);
-@define-color mpris-button-hover alpha(@background, 0.50);
 @define-color text @color15;
 @define-color bg alpha(@background, 0.5);
-@define-color bg-hover alpha(@background, 0.8);
 @define-color mycolor @color9;
-@define-color border-color alpha(@mycolor, 0.15);
-@define-color critical-bg #ffb4a9;
-@define-color critical-text #680003;
 
 /* ========================================
-   ESTILOS GLOBALES
+    GLOBAL STYLES
    ======================================== */
 * {
   outline: none;
@@ -22,7 +16,7 @@
 }
 
 /* ========================================
-   CONTROL CENTER
+    CONTROL CENTER
    ======================================== */
 .control-center {
   background-color: @bg;
@@ -40,7 +34,7 @@
 }
 
 /* ========================================
-   WIDGETS - TÍTULO
+    WIDGETS - TITLE
    ======================================== */
 .widget-title {
   padding: unset;
@@ -73,7 +67,7 @@
 }
 
 /* ========================================
-   WIDGETS - ETIQUETA
+    WIDGETS - LABEL
    ======================================== */
 .widget-label {
   margin: 8px;
@@ -83,9 +77,9 @@
   font-size: 1.1rem;
 }
 
-/*========================================
-  WIDGETS - DO NOT DISTURB
-======================================== */
+/* ========================================
+    WIDGETS - DO NOT DISTURB
+   ======================================== */
 .widget-dnd {
   padding: 0 20px;
   padding-top: 20px;
@@ -122,110 +116,7 @@
 
 
 /* ========================================
-   WIDGETS - MPRIS (REPRODUCTOR DE MEDIOS)
-   ======================================== */
-.widget-mpris .widget-mpris-player {
-  padding: 16px;
-  margin: 16px 20px;
-  background-color: @mpris-album-art-overlay;
-  border-radius: 12px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
-}
-
-.widget-mpris .widget-mpris-player button {
-  color: @text;
-  text-shadow: none;
-  border-radius: 15px;
-  border: none;
-  padding: 5px;
-  margin: 5px;
-  transition: all 0.5s ease;
-}
-
-.widget-mpris .widget-mpris-player button:not(.selected) {
-  background: transparent;
-  border: 2px solid transparent;
-}
-
-.widget-mpris .widget-mpris-player button:hover {
-  all: unset;
-  background: @bg-hover;
-  text-shadow: none;
-  border-radius: 15px;
-  border: 2px solid transparent;
-  padding: 5px;
-  margin: 5px;
-  transition: all 0.5s ease;
-}
-
-.widget-mpris .widget-mpris-player .widget-mpris-album-art {
-  border-radius: 20px;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
-}
-
-.widget-mpris .widget-mpris-player .widget-mpris-title {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-.widget-mpris .widget-mpris-player .widget-mpris-subtitle {
-  font-size: 1.1rem;
-}
-
-.widget-mpris .widget-mpris-player > box > button:hover {
-  background-color: @mpris-button-hover;
-}
-
-/* ========================================
-   WIDGETS - BOTONES EN GRID
-   ======================================== */
-.widget-buttons-grid {
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-bottom: 8px;
-  margin: 10px;
-  border-radius: 12px;
-  background: transparent;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button {
-  background: transparent;
-  border-radius: 12px;
-  text-shadow: none;
-  /*box-shadow: 0px 0px 8px rgba(255, 255, 255, 0.02);*/
-  transition: all 0.5s ease;
-  min-width: 0;
-  min-height: 0;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button:hover {
-  background: @color4;
-  /*box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);*/
-  transition: all 0.5s ease;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-  background: @mycolor;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked label {
-  color: @background;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button label {
-  font-size: 20px;
-  color: @color7;
-  transition: all 0.7s ease;
-}
-
-.widget-buttons-grid > flowbox > flowboxchild > button:hover label {
-  font-size: 20px;
-  color: @text;
-  transition: all 0.7s ease;
-}
-
-/* ========================================
-   WIDGETS - MENÚ Y BARRA SUPERIOR
+    WIDGETS - MENU AND TOP BAR
    ======================================== */
 .widget-menubar > box > .menu-button-bar > button {
   border: none;
@@ -238,7 +129,7 @@
 }
 
 /* ========================================
-   CONTROLES DESLIZANTES
+    SLIDER CONTROLS
    ======================================== */
 trough {
   border-radius: 20px;
@@ -267,21 +158,4 @@ trough slider {
   background: transparent;
   box-shadow: none;
   border: none;
-}
-
-/* ========================================
-   WIDGETS - VOLUMEN Y BRILLO
-   ======================================== */
-.widget-volume {
-  background-color: transparent;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 12px;
-}
-
-.widget-backlight {
-  background-color: transparent;
-  padding: 8px;
-  margin: 8px;
-  border-radius: 12px;
 }
