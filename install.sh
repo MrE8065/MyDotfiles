@@ -209,10 +209,18 @@ if [[ "$mkinit_choice" == "y" ]]; then
   grep "^HOOKS=" /etc/mkinitcpio.conf
 
   # Regenerate initramfs
-  info_message "[*] Regenerating initramfs images..."
+  info_message "Regenerating initramfs images..."
   sudo mkinitcpio -P
+  success_message "Plymouth entry successfully added to the mkinitcpio.conf file."
+  info_message "Remember to add splash to your kernel parameters to see the boot animation."
+  info_message "See the archwiki entry for Plymouth for more information."
+  sleep 2
 else
-  info_message "Skipping mkinitcpio modification. REMEMBER TO ADD PLYMOUTH ENTRY MANUALLY TO SHOW THE CUSTOM BOOT ANIMATION"
+  info_message "Skipping mkinitcpio modification." 
+  info_message "REMEMBER TO ADD PLYMOUTH ENTRY MANUALLY TO SHOW THE CUSTOM BOOT ANIMATION."
+  info_message "ALSO ADD SPLASH TO THE KERNEL PARAMETERS TO SEE THE ANIMATION."
+  info_message "See the archwiki entry for Plymouth for more information."
+  sleep 2
 fi
 
 sleep 2
