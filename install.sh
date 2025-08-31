@@ -224,7 +224,7 @@ clear
 # Ask the user if wants to install laptop packages
 # ----------------------------------------------------------
 
-info_message "Do you want to install the laptop packages (bluetooth and power-profiles)? (y/n, default:n): "
+info_message "Do you want to install the laptop packages (brightnessctl, bluetooth and power-profiles)? (y/n, default:n): "
 read laptop_choice
 laptop_choice=${laptop_choice:-n} # Default to 'n' if empty
 
@@ -232,6 +232,13 @@ if [[ "$laptop_choice" == "y" ]]; then
 	installPackages "${laptop[@]}"
   systemctl enable bluetooth
   success_message "Laptop packages installed and Bluetooth service enabled."
+else
+  info_message "Skipping laptop packages installation."
+  sleep 1
+  info_message "Installing brightness controller for desktop computers."
+  sleep 2
+  installPackages "ddcutil"
+  success_message "Brightness controller for desktop computers installed successfully."
 fi
 
 sleep 1

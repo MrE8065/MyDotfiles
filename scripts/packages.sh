@@ -53,7 +53,6 @@ various=(
   "checkupdates-with-aur"
   "python-pywal16"
   "python-pywalfox"
-  "ddcutil"
   "xdg-desktop-portal-gtk"
   "xdg-desktop-portal-hyprland"
 )
@@ -75,6 +74,7 @@ fonts=(
 laptop=(
   "blueman"
   "power-profiles-daemon"
+  "brightnessctl"
 )
 
 optional=(

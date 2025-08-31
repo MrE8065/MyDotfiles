@@ -159,7 +159,7 @@ Shows the volume percentage and device icon. Scroll to change volume and click t
 
 ### Brightness
 
-Shows the current brightness of the screen and allows to modify it scrolling up or down. Thanks to `ddcutils`, you can control even external monitors!
+Shows the current brightness of the screen and allows to modify it scrolling up or down. If you click on the icon, the bluelight filter will activate. (If you are on a laptop, the script will install `brightnessctl` to control the brightness and, if you are on a desktop computer, it will install `ddcutil`, so you can control even external monitors!)
 
 ### Power menu
 
