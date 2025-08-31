@@ -1,7 +1,7 @@
 @import url('../../.cache/wal/colors-waybar.css');
 
 window {
-  background-color: alpha(@background, 0.6);
+  background-color: alpha(@background, 0.6); /* Background blur */
 }
 
 button {
@@ -10,14 +10,14 @@ button {
   box-shadow: none;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 20%;
-  border-radius: 100px;
+  background-size: 20%; /* Icon size */
+  border-radius: 100px; /* Corner roundness of selection */
 }
 
 button:hover, button:focus {
   color: @foreground;
-  background-color: @color4;
-  background-size: 40%;
+  background-color: @color4; /* Color of icon background when selected */
+  background-size: 40%; /* Icon size when selected */
 }
 
 #suspend {
@@ -38,5 +38,6 @@ button:hover, button:focus {
 
 
 #logout, #suspend, #shutdown, #reboot {
-  margin: 100px 10px;
+  margin: 250px 40px; /* Vertical size, horizontal size */
+  /*margin: 50px 10px; <- I use this values in my laptop (smaller screen)*/
 }
