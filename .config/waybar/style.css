@@ -1,23 +1,31 @@
+/*
+  To modify the thickness of the bar, you have to change the following values:
+    - Font sizes
+    - Module containers paddings
+    - Workspaces buttons widths, separations, and lengths
+  Look for the lines with comments to find them
+*/
+
 @import url("../../.cache/wal/colors-waybar.css");
 
 /* ===== GLOBAL CONFIG ===== */
 * {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: "JetBrainsMono Nerd Font Propo"; /* Use propo or non-monospaced nerd fonts to prevent misaligned icons */
+  /*font-family: "Noto Sans Regular" "Symbols Nerd Font"*/ /*Use noto sans regular for text and symbols only nerd font for icons (obviously, you have to install the last one for this to work)*/
+  font-size: 16px; /* Global font size */
 }
 
 window#waybar {
   all: unset;
   min-height: 0;
-  font-size: 16px;
-  /*background: alpha(@background, 0.8);*/
-  /*border-bottom: 1px solid alpha(@color4, 0.2);*/
 }
 
 /* ===== MODULE CONTAINERS ===== */
 .modules-left,
 .modules-center,
 .modules-right {
-  padding: 8px;
+  padding: 6px; /* Internal separation */
+  padding-top: 4px; /* Separation from top of screen */
   background: alpha(@background, 0.8);
 }
 
@@ -40,16 +48,15 @@ tooltip {
   color: @color7;
   border-radius: 8px;
   border: 1px solid alpha(@color4, 0.3);
-  padding: 8px 12px;
-  font-size: 14px;
-  /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);*/
+  font-size: 14px; /* Tooltips font size. I recommend to keep it lower than the global font size */
 }
 
 /* ===== SHARED BASE STYLES ===== */
+#taskbar button,
 #clock,
 #bluetooth,
 #battery,
-/*#tray,*/
+#tray,
 #mpris,
 #pulseaudio,
 #custom-notification,
@@ -57,9 +64,12 @@ tooltip {
 #custom-expand,
 #custom-brightness,
 #network,
-#power-profiles-daemon {
-  padding: 8px 12px;
-  margin: 0 2px;
+#power-profiles-daemon,
+#custom-power,
+#custom-colorpicker,
+#backlight {
+  padding: 0px 10px; /* Internal separation in buttons */
+  margin: 0px 3px; /* Separation between buttons */
   border-radius: 8px;
   background: alpha(@background, 0.3);
   border: 1px solid alpha(@color4, 0.1);
@@ -67,10 +77,11 @@ tooltip {
   color: @cursor;
 }
 
+#taskbar button:hover,
 #clock:hover,
 #bluetooth:hover,
 #battery:hover,
-/*#tray:hover,*/
+#tray:hover,
 #mpris:hover,
 #pulseaudio:hover,
 #custom-notification:hover,
@@ -78,7 +89,9 @@ tooltip {
 #custom-expand:hover,
 #custom-brightness:hover,
 #network:hover,
-#power-profiles-daemon:hover {
+#power-profiles-daemon:hover,
+#custom-colorpicker:hover,
+#backlight:hover {
   color: @color4;
   background: alpha(@color4, 0.1);
   border-color: alpha(@color4, 0.3);
@@ -108,51 +121,21 @@ tooltip {
   100% { opacity: 0.3; }
 }
 
-/* Tray */
-#tray menu *,
-#tray menu separator {
-  padding: 8px 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 6px;
-}
-
 /* MPRIS */
 #mpris {
   min-width: 200px;
 }
 
-/* Pulseaudio */
-#pulseaudio {
-  padding-right: 15px;
-}
-
-/* Taskbar */
-#taskbar {
-  padding-right: 8px;
-}
-
-#taskbar button {
-  padding: 8px 12px;
-  margin: 0 2px;
-  border-radius: 8px;
-  background: alpha(@background, 0.3);
-  border: 1px solid alpha(@color4, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+/* Taskbar active button */
 #taskbar button.active {
   background: alpha(@color4, 0.2);
   border-color: alpha(@color4, 0.4);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#taskbar button:hover {
-  background: alpha(@color4, 0.2);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Workspaces */
 #workspaces {
-  padding: 0px 8px;
+  padding: 0px 5px; /* Additional separation from the sides */
 }
 
 #workspaces button {
@@ -160,9 +143,8 @@ tooltip {
   background: alpha(@color5, 0.6);
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 0 8px;
-  margin: 0px 5px;
-  margin-bottom: 3px;
+  padding: 0px 8px; /* Thickness of bars */
+  margin: 0px 5px; /* Separation between bars */
 }
 
 #workspaces button:hover {
@@ -175,7 +157,7 @@ tooltip {
 
 #workspaces button.empty {
   background: alpha(@color4, 0.4);
-  margin-bottom: 20px;
+  margin-bottom: 18px; /* Bar lenght when empty (less px to longer bar). DON'T MAKE IT TOO SHORT OR IT WILL PUSH THE BAR DOWNWARDS */
 }
 
 #workspaces button.empty:hover {
@@ -184,30 +166,18 @@ tooltip {
 
 #workspaces button.empty.active {
   background: @color4;
-  margin-bottom: 15px;
+  margin-bottom: 10px; /* Bar lenght when is empty and selected (more px to shorter bar). Keep it between the full bar lenght and the empty bar lenght*/
 }
 
-#network {
-  padding-right: 20px;
+/* Clock */
+#clock {
+  padding-right: 0px; /* Removes weird space to the right of the clock */
 }
 
 /* ===== CUSTOM MODULES ===== */
-/* Custom expand */
-#custom-expand {
-  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
-}
-
 /* Custom power */
 #custom-power {
-  padding: 8px 12px;
-  padding-left: 8px;
-  margin: 0 2px;
-  border-radius: 8px;
-  background: alpha(@background, 0.3);
   border: 1px solid alpha(#f53c3c, 0.3);
-  font-size: 14px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  color: @cursor;
 }
 
 #custom-power:hover {
@@ -215,37 +185,6 @@ tooltip {
   background: alpha(#f53c3c, 0.1);
   border-color: alpha(#f53c3c, 0.5);
   box-shadow: 0 4px 8px rgba(245, 60, 60, 0.2);
-}
-
-/* ===== CUSTOM GROUP MODULES ===== */
-/* Custom group expand */
-#group-expand {
-  padding: 8px 12px;
-  margin: 0 2px;
-  border-radius: 8px;
-  background: alpha(@background, 0.3);
-  border: 1px solid alpha(@color4, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#group-expand:hover {
-  background: alpha(@color4, 0.1);
-  border-color: alpha(@color4, 0.3);
-}
-
-/* Custom colorpicker */
-#custom-colorpicker {
-  padding: 8px 12px;
-  margin: 0 2px;
-  border-radius: 8px;
-  background: alpha(@background, 0.3);
-  border: 1px solid alpha(@color4, 0.1);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#custom-colorpicker:hover {
-  background: alpha(@color4, 0.1);
-  border-color: alpha(@color4, 0.3);
 }
 
 /* Separator */

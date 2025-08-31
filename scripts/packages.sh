@@ -3,6 +3,7 @@ hypr=(
   "hyprlock"
   "hyprpicker"
   "hyprshot"
+  "hyprsunset"
 )
 
 terminal=(

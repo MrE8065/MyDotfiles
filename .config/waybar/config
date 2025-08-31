@@ -1,183 +1,205 @@
 {
-        "layer": "top",
-        "height:": 60,
-        "position": "top",
-        "reload_style_on_change": true,
-        "modules-left": ["custom/notification","clock","custom/pacman","mpris","wlr/taskbar"],
-        "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["group/expand","bluetooth", "network", "pulseaudio", "custom/brightness", "battery","custom/power"],
+  "layer": "top",
+  "height": 50,
+  "position": "top",
+  "reload_style_on_change": true,
+  "modules-left": ["custom/notification","clock","custom/pacman","mpris","wlr/taskbar"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["group/expand","bluetooth", "network", "pulseaudio", "custom/brightness", "backlight", "battery","custom/power"],
 
-        "pulseaudio": {
-            "format": "{volume}% {icon}",
-            "format-muted": "",
-            "format-icons": {
-                "headphone": "",
-                "default": ["", ""]
-            },
-            "scroll-step": 1,
-            "on-click": "pavucontrol"
-        },
+  "custom/notification": {
+    "tooltip-format": "Open notifications panel",
+    "format": "",
+    "on-click": "swaync-client -t -sw",
+    "escape": true
+  },
+  
+  "clock": {
+    "format": "{:%I:%M:%S %p} ",
+    "interval": 1,   
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "today": "<span color='#fAfBfC'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "shift_up",
+      "on-click": "shift_down"
+    }
+  },
 
-        "tray": {
-            "reverse-direction": "true",
-            "icon-size": 14,
-            "spacing": 10
-        },
+  "custom/pacman": {
+    "format": "󰅢 {}",
+    "interval": 3600,   
+    "exec": "checkupdates | wc -l",
+    "exec-if": "exit 0",
+    "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+    "signal": 8,
+    "tooltip-format": "Pending Updates"
+  },
 
-        "mpris": {
-            "format": "{title} - {artist}",
-            "dynamic-len": 20,
-            "format-paused": "Music paused :(",
-            "title-len": 20,
-            "artist-len": 20,
-            "ignored-players": ["firefox"],
-            "tooltip-format": "From: {player}",
-            "on-click": "playerctl previous track",
-            "on-click-middle": "playerctl play-pause",
-            "on-click-right": "playerctl next track"
-        },
+  "mpris": {
+    "format": "{title} - {artist}",
+    "dynamic-len": 20,
+    "format-paused": "Music paused :(",
+    "title-len": 20,
+    "artist-len": 20,
+    "ignored-players": ["firefox"],
+    "tooltip-format": "From: {player}",
+    "on-click": "playerctl previous track",
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next track"
+  },
 
-        "wlr/taskbar": {
-            "format": "{icon}",
-            "icon-size": 18,
-            "tooltip-format": "{title}",
-            "on-click": "activate",
-            "on-click-middle": "close"
-        },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
 
-        "custom/power": {
-            "format": "⏻",
-            "tooltip-format": "Open power menu",
-            "on-click":"wlogout -b 4 -m 400"
-        },
+  
+  "hyprland/workspaces": {
+    "format": "",
+    "format-icons": {
+      "active": "",
+      "default": "",
+      "empty": ""
+    },
+    "persistent-workspaces": {
+      "*": [ 1,2,3,4,5 ]
+    }
+  },
+  
+  "group/expand": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-left-to-right": true,
+      "click-to-reveal": true
+    },
+    "modules": ["custom/expand", "tray", "custom/colorpicker", "power-profiles-daemon", "custom/separator"]
+  },
 
-        "hyprland/workspaces": {
-            "format": "",
-            "format-icons": {
-                "active": "",
-                "default": "",
-                "empty": ""
-            },
-            "persistent-workspaces": {
-                "*": [ 1,2,3,4,5 ]
-            }
-        },
-        "custom/notification": {
-            "tooltip-format": "Open notifications panel",
-            "format": "",
-            "on-click": "swaync-client -t -sw",
-            "escape": true
-        },
-        "clock": {
-            "format": "{:%I:%M:%S %p} ",
-            "interval": 1,   
-            "tooltip-format": "<tt>{calendar}</tt>",
-            "calendar": {
-                "format": {
-                    "today": "<span color='#fAfBfC'><b>{}</b></span>"
-                }
-            },
-            "actions": {
-                "on-click-right": "shift_up",
-                "on-click": "shift_down"
-            }
-        },
-        "bluetooth": {
-            "format-on": "󰂯",
-            "format-off": "BT-off",
-            "format-disabled": "󰂲",
-            "format-no-controller": "",
-            "format-connected-battery": "{device_battery_percentage}% 󰂯",
-            "format-alt": "{device_alias} 󰂯",
-            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-            "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-            "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-            "on-click-right": "blueman-manager",
-        }, 
-        "battery": {
-            "interval":30,
-            "states": {
-                "good": 95,
-                "warning": 30,
-                "critical": 20
-            },
-            "format": "{capacity}% {icon}",
-            "format-charging": "{capacity}% 󰂄",
-            "format-plugged": "{capacity}% 󰂄 ",
-            "format-alt": "{time} {icon}",
-            "format-icons": [
-                "󰁻",
-            "󰁼",
-            "󰁾",
-            "󰂀",
-            "󰂂",
-            "󰁹"
-            ],
-        },
-        "custom/pacman": {
-            "format": "󰅢 {}",
-            "interval": 3600,   
-            "exec": "checkupdates | wc -l",
-            "exec-if": "exit 0",
-            "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-            "signal": 8,
-            "tooltip-format": "Pending Updates"
-        },
-        "custom/expand": {
-            "format": "",
-            "tooltip": false
-        },
-        "custom/separator": {
-            "format": "|",
-            "tooltip": false
-        },
-        "group/expand": {
-            "orientation": "inherit",
-            "drawer": {
-                "transition-duration": 600,
-                "transition-left-to-right": true,
-                "click-to-reveal": true
-            },
-            "modules": ["custom/expand", "tray", "custom/colorpicker", "power-profiles-daemon", "custom/separator"],
-        },
-        "custom/colorpicker": {
-            "format": "{}",
-            "return-type": "json",
-            "interval": "once",
-            "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
-            "on-click": "~/.config/waybar/scripts/colorpicker.sh",
-            "signal": 1
-        },
-        "custom/brightness": {
-            "format": "{icon} {percentage}%",
-            "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
-            "return-type": "json",
-            "exec": "ddcutil getvcp 10 | grep -oP 'current.*?=\\s*\\K[0-9]+' | { read x; echo '{\"percentage\":'${x}'}'; }",
-            "on-scroll-up": "ddcutil setvcp 10 + 10",
-            "on-scroll-down": "ddcutil setvcp 10 - 10",
-            "tooltip-format": "Screen brightness",
-            "exec-on-event": true,
-            "interval": "once"
-        },
-        "network": {
-            "format-wifi": "",
-            "format-ethernet":"",
-            "format-disconnected": "",
-            "tooltip-format-disconnected": "Error",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%)",
-            "tooltip-format-ethernet": "{ifname}",
-            "on-click": "nm-connection-editor"
-        },
-        "power-profiles-daemon": {
-          "format": "{icon}",
-          "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-          "tooltip": true,
-          "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-          }
-        }
+  "custom/expand": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "tray": {
+    "reverse-direction": "true",
+    "icon-size": 14,
+    "spacing": 10
+  },
+
+  "custom/colorpicker": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": "once",
+    "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
+    "on-click": "~/.config/waybar/scripts/colorpicker.sh",
+    "signal": 1
+  },
+
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "format-on": "󰂯",
+    "format-off": "BT-off",
+    "format-disabled": "󰂲",
+    "format-no-controller": "",
+    "format-connected-battery": "{device_battery_percentage}% 󰂯",
+    "format-alt": "{device_alias} 󰂯",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click-right": "blueman-manager"
+  },
+
+  "network": {
+    "format-wifi": "",
+    "format-ethernet":"",
+    "format-disconnected": "",
+    "tooltip-format-disconnected": "Error",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "on-click": "nm-connection-editor"
+  },
+  
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", ""]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+  },
+  
+  "custom/brightness": {
+    "format": "{icon} {percentage}%",
+    "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
+    "return-type": "json",
+    "exec": "ddcutil getvcp 10 | grep -oP 'current.*?=\\s*\\K[0-9]+' | { read x; echo '{\"percentage\":'${x}'}'; }",
+    "on-scroll-up": "ddcutil setvcp 10 + 10",
+    "on-scroll-down": "ddcutil setvcp 10 - 10",
+    "on-click": "~/.config/waybar/scripts/night-mode.sh",
+    "tooltip-format": "Screen brightness",
+    "exec-on-event": true,
+    "interval": "once"
+  },
+
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": ["\uDB80\uDCDE", "\uDB80\uDCDF", "\uDB80\uDCE0"],
+    "on-scroll-up": "brightnessctl -n set 5%+",
+    "on-scroll-down": "brightnessctl -n set 5%-",
+    "on-click": "~/.config/waybar/scripts/night-mode.sh"
+  },
+
+  "battery": {
+    "interval":30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄",
+    "format-plugged": "{capacity}% 󰂄 ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰁻",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip-format": "Open power menu",
+    "on-click":"wlogout -b 4"
+  }
 } 
