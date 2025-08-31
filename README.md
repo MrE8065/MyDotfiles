@@ -8,7 +8,8 @@
 <a href="#how-to-install"><kbd> <br> How to install? <br> </kbd></a>&ensp;&ensp;
 <a href="#what-will-change"><kbd> <br> What will change? <br> </kbd></a>&ensp;&ensp;
 <a href="#keybinds"><kbd> <br> Keybinds <br> </kbd></a>&ensp;&ensp;
-<a href="#packages"><kbd> <br> Packages <br> </kbd></a>
+<a href="#packages"><kbd> <br> Packages <br> </kbd></a>&ensp;&ensp;
+<a href="#after-installation"><kbd> <br> After Installation <br> </kbd></a>
 
 </div>
 <br>
@@ -92,6 +93,8 @@ That been said, to install, simply execute this commands:
   cd ~/MyDotfiles
   ./install.sh
 ```
+
+After the installation is done, take a look to the [after installation](#after-installation) recommendations to adjust important values to your computer screen.
 
 <a id="what-will-change"></a>
 
@@ -432,3 +435,19 @@ https://github.com/user-attachments/assets/cb767248-547b-402e-99c9-042714291f87
 # 📦 Packages
 
 Check the [packages](./scripts/packages.sh) script to see all the packages that will be installed.
+
+<br>
+
+<a id="after-installation"></a>
+
+# 💽 After installation
+
+After the installation is completed you should changes some configurations to adjust the customization to your screen resolution.
+
+  - The bar thickness (`~/.config/waybar/style.css`)
+  - The size of the apps launcher (`~/.config/wofi/config`)
+  - The size of the notifications center (`~/.config/swaync/config.json`)
+  - The buttons of the power menu (`~/.config/wlogout/style.css`)
+
+> [!TIP]
+> The css files have comments to help changing important values
