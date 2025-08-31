@@ -31,5 +31,4 @@ alias ls="lsd"
 alias grep="grep --color=auto"
 
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
-export PATH="$PATH:$(gem env path | sed 's#[^:]\+#&/bin#g')" # This is for Ruby. You can delete it
 export PATH="$PATH:$HOME/.spicetify/"
