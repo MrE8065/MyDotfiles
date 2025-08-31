@@ -173,9 +173,49 @@ git clone https://github.com/MrE8065/PSLinux.git ~/PSLinux
 sudo cp -r ~/PSLinux/pslinux /usr/share/themes
 sudo plymouth-set-default-theme -R pslinux
 
-success_message "Plymouth boot animation applied successfully."
+success_message "Plymouth boot animation downloaded successfully."
 
-sleep 1
+sleep 2
+clear
+
+info_message "Do you want to add the plymouth entry to the mkinitcpio file? If you select no, REMEMBER TO ADD IT TO SHOW THE CUSTOM BOOT ANIMATION (y/n, default:y): "
+read mkinit_choice
+mkinit_choice=${mkinit_choice:-y}
+
+if [[ "$mkinit_choice" == "y" ]]; then
+  info_message "Creating a backup of mkinitcpio.conf."
+  sudo cp /etc/mkinitcpio.conf /etc/mkinitcpio_backup.conf
+  info_message "REMEMBER TO DELETE IT IF THE INSTALLATION IS SUCCESSFUL"
+  sleep 2
+
+  # Script to autodetect if the user is using systemd or udev and add plymouth entry accordingly
+  HOOKS_LINE=$(grep "^HOOKS=" /etc/mkinitcpio.conf)
+
+  if [[ "$HOOKS_LINE" == *"udev"* ]]; then
+    info_message "udev detected"
+    NEW_LINE=$(echo "$HOOKS_LINE" | sed -E 's/(udev)/\1 plymouth/')
+  elif [[ "$HOOKS_LINE" == *"systemd"* ]]; then
+    info_message "systemd detected"
+    NEW_LINE=$(echo "$HOOKS_LINE" | sed -E 's/(systemd)/\1 plymouth/')
+  else
+    info_message "No udev or systemd found in HOOKS. Aborting."
+    exit 1
+  fi
+
+  # Replace HOOKS line with the modified one
+  sudo sed -i "s|^HOOKS=.*|$NEW_LINE|" /etc/mkinitcpio.conf
+
+  info_message "HOOKS line updated."
+  grep "^HOOKS=" /etc/mkinitcpio.conf
+
+  # Regenerate initramfs
+  info_message "[*] Regenerating initramfs images..."
+  sudo mkinitcpio -P
+else
+  info_message "Skipping mkinitcpio modification. REMEMBER TO ADD PLYMOUTH ENTRY MANUALLY TO SHOW THE CUSTOM BOOT ANIMATION"
+fi
+
+sleep 2
 clear
 
 
