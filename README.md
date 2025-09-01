@@ -94,7 +94,8 @@ That been said, to install, simply execute this commands:
   ./install.sh
 ```
 
-After the installation is done, take a look to the [after installation](#after-installation) recommendations to adjust important values to your computer screen.
+> [!IMPORTANT]
+> After the installation is done, take a look to the [after installation](#after-installation) recommendations to adjust important adjustments.
 
 <a id="what-will-change"></a>
 
@@ -442,12 +443,15 @@ Check the [packages](./scripts/packages.sh) script to see all the packages that 
 
 # 💽 After installation
 
-After the installation is completed you should changes some configurations to adjust the customization to your screen resolution.
+After the installation is completed you should make some adjustments:
 
-  - The bar thickness (`~/.config/waybar/style.css`)
-  - The size of the apps launcher (`~/.config/wofi/config`)
-  - The size of the notifications center (`~/.config/swaync/config.json`)
-  - The buttons of the power menu (`~/.config/wlogout/style.css`)
+  - Enable plymouth. The script only adds the mkinitcpio hook. You need to configure your boot loader to show the splash ([check the Arch wiki for more info](https://wiki.archlinux.org/title/Plymouth))
+
+  - Adjust config files to fit your screen resolution.
+    - The bar thickness (`~/.config/waybar/style.css`)
+    - The size of the apps launcher (`~/.config/wofi/config`)
+    - The size of the notifications center (`~/.config/swaync/config.json`)
+    - The buttons of the power menu (`~/.config/wlogout/style.css`)
 
 > [!TIP]
 > The css files have comments to help changing important values
