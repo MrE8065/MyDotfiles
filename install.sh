@@ -170,7 +170,7 @@ info_message "Downloading and applying Plymouth boot animation..."
 sleep 1
 
 git clone https://github.com/MrE8065/PSLinux.git ~/PSLinux
-sudo cp -r ~/PSLinux/pslinux /usr/share/themes
+sudo cp -r ~/PSLinux/pslinux /usr/share/plymouth/themes
 sudo plymouth-set-default-theme -R pslinux
 
 success_message "Plymouth boot animation downloaded successfully."
