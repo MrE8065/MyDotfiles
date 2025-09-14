@@ -32,3 +32,12 @@ alias grep="grep --color=auto"
 
 export STARSHIP_CONFIG="$HOME/.config/starship.toml"
 export PATH="$PATH:$HOME/.spicetify/"
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+
+# Find and go to folders (excluding .git)
+alias fzfcd='cd "$(find -type d -path "*/.git" -prune -o -type d -print | fzf --preview="lsd --tree {} --color always")"'
+
+# Preview and open files with neovim
+alias fzfnvim='nvim "$(fzf --preview="cat {}")"'

@@ -16,6 +16,7 @@ terminal=(
   "fastfetch"
   "btop"
   "thefuck"
+  "fzf"
 )
 
 network=(
