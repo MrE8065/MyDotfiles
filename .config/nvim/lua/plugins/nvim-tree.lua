@@ -17,15 +17,7 @@ return {
       renderer = {
         indent_markers = {
           enable = true,
-        },
-        icons = {
-          glyphs = {
-            folder = {
-              arrow_closed = "",
-              arrow_open = "", 
-            },
-          },
-        },
+        }
       },
       -- disable window_picker
       -- for explorer to work well with

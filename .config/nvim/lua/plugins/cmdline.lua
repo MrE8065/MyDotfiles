@@ -34,7 +34,7 @@ return {
         vim.cmd('highlight NotifyINFOIcon guifg=' .. color9)
         vim.cmd('highlight NotifyINFOTitle guifg=' .. color5)
         require("notify").setup({
-          background_color = vim.g.color0,
+          background_colour = "#000000",
         })
     end,
 }
