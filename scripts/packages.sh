@@ -16,7 +16,6 @@ terminal=(
   "fastfetch"
   "btop"
   "thefuck"
-  "fzf"
 )
 
 network=(
@@ -80,8 +79,6 @@ laptop=(
 
 optional=(
   "firefox"
-  "spotify-launcher"
+  "spotify"
   "visual-studio-code-bin"
-  "github-desktop-plus-bin"
-  "gnome-keyring"
 )
