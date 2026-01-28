@@ -21,6 +21,7 @@ terminal=(
 network=(
   "networkmanager"
   "nm-connection-editor"
+  "networkmanager-dmenu"
 )
 
 file_explorer=(

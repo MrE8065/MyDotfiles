@@ -57,3 +57,7 @@ wofi:
 starship:
   path: "~/.config/starship.toml"
   desc: "Starship configuration"
+
+networkmanager-dmenu:
+  path: "~/.config/networkmanager-dmenu"
+  desc: "Network manager dmenu configuration"
