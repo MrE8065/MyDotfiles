@@ -1,0 +1,24 @@
+# Text
+font=MesloLGM Nerd Font Mono 11
+text-color=#c5c9c5
+
+#Border
+border-color=#e6c384
+border-size=2
+border-radius=6
+
+# Background
+background-color=#181616
+
+# Progress
+progress-color=#8ea4a2
+
+# Icons path
+icon-path=/usr/share/icons/Kanagawa
+
+# Urgency
+[urgency=low]
+border-color=#c4b28a
+
+[urgency=high]
+border-color=#e46876

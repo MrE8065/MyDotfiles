@@ -1,0 +1,115 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+
+format = """
+[░▒▓](color_4)\
+$os\
+$username\
+[ ](color_4)\
+$directory\
+$character\
+"""
+right_format = """$git_branch $git_status $git_commit $all $cmd_duration"""
+
+palette = "kanagawa_dragon"
+
+[palettes.kanagawa_dragon]
+color_bg = '#181616'
+color_fg = '#c5c9c5'
+color_badge = '#181616'
+color_bold = '#72a7bc'
+color_cursor = '#c8c093'
+color_highlight_bg = '#2d4f67'
+color_highlight_fg = '#c8c093'
+color_1 = '#0d0c0c'
+color_2 = '#c4746e'
+color_3 = '#8a9a7b'
+color_4 = '#c4b28a'
+color_5 = '#8ba4b0'
+color_6 = '#a292a3'
+color_7 = '#8ea4a2'
+color_8 = '#c8c093'
+color_9 = '#a6a69c'
+color_10 = '#e46876'
+color_11 = '#87a987'
+color_12 = '#e6c384'
+color_13 = '#7fb4ca'
+color_14 = '#938aa9'
+color_15 = '#7aa89f'
+color_16 = '#c5c9c5'
+
+[username]
+show_always = true
+style_root = "color_10"
+format = '[$user ](bg:color_4 fg:color_bg)'
+
+[os]
+disabled = false
+style = 'bg:color_4 fg:color_bg'
+
+[os.symbols]
+Arch = "  "
+Linux = "  "
+Unknown = "  "
+
+[cmd_duration]
+format = "[$duration]($style)"
+
+[directory]
+format = "[$path]($style)"
+truncation_length = 2
+truncation_symbol = "…/"
+
+[character]
+success_symbol = "[](color_13)"
+error_symbol = "[✗](color_10)"
+disabled = false
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+
+[git_branch]
+symbol = "  "
+format = '[$symbol $branch (:$remote_branch)]($style)'
+
+[git_status]
+style = "color_13"
+format = "[$modified$deleted$untracked$ahead_behind]($style) "
+modified = " "
+deleted = " "
+untracked = " "
+ahead = " "
+behind = " "
+up_to_date = " "
+
+[git_commit]
+tag_symbol = '  '
+format = '[$symbol($version)]($style)'
+
+[docker_context]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[hostname]
+ssh_symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[lua]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[nodejs]
+symbol = "  "
+format = '[$symbol($version)]($style)'
+
+[package]
+symbol = " 󰏗 "
+format = '[$symbol($version)]($style)'
+
+[python]
+symbol = "  "
+format = '[$symbol($version)($virtualenv)]($style)'

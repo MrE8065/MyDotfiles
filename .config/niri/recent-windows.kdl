@@ -1,0 +1,9 @@
+// Change the style of the Alt+Tab switcher
+recent-windows {
+  highlight {
+    active-color "#C4B28A"
+    urgent-color "#C4746E"
+    padding 20
+    corner-radius 8
+  }
+}

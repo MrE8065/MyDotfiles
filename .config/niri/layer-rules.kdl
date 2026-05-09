@@ -1,0 +1,13 @@
+layer-rule {
+  match namespace="^wallpaper$"
+  place-within-backdrop true
+}
+
+layer-rule {
+  match namespace="vicinae"
+
+  background-effect {
+    blur true
+    xray false
+  }
+}

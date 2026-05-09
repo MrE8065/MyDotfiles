@@ -1,0 +1,120 @@
+/* === COLORS === */
+@define-color text #C5C9C5;
+@define-color bg #181616;
+@define-color sel #C4B28A;
+@define-color border alpha(@sel, 0.5);
+
+/* ===== GLOBAL CONFIG ===== */
+* {
+  font-family: "MesloLGM Nerd Font Propo"; /* Use propo or non-monospaced nerd fonts to prevent misaligned icons */
+  font-size: 15px; /* Global font size */
+  color: @text;
+}
+
+window#waybar {
+  background-color: transparent;
+}
+
+/* ===== MODULE CONTAINERS ===== */
+
+.modules-left,
+/* .modules-center, */
+.modules-right {
+  background-color: @bg;
+  border: 2px solid @border;
+  border-radius: 8px;
+}
+
+/* ===== GLOBAL TOOLTIP ===== */
+tooltip {
+  font-weight: bold;
+  background: @bg;
+  color: @text;
+  border-radius: 8px;
+  border: 1px solid @border;
+  font-size: 12px;
+}
+
+/* ===== SHARED BASE STYLES ===== */
+#clock,
+#taskbar button,
+/* #mpris, */
+#tray,
+#bluetooth,
+#network,
+#pulseaudio,
+#backlight,
+#battery,
+#custom-power {
+  padding: 2px 7px;
+}
+
+#network,
+#pulseaudio,
+#custom-power {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#clock:hover,
+#taskbar button:hover,
+/* #mpris:hover, */
+#tray:hover,
+#bluetooth:hover,
+#network:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover {
+  color: @sel;
+}
+
+/* ===== BUILT-IN MODULES ===== */
+/* Battery */
+#battery.charging {
+  color: #87a987;
+  border-color: alpha(#87a987, 0.3);
+}
+
+#battery.warning:not(.charging) {
+  color: #e6c384;
+  border-color: alpha(#e6c384, 0.3);
+}
+
+#battery.critical:not(.charging) {
+  color: #e46876;
+  border-color: alpha(#e46876, 0.3);
+  animation: blink 0.5s steps(90) infinite alternate;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+/* Taskbar */
+taskbar button {
+  border-radius: 3px;
+}
+
+#taskbar button.active {
+  background-color: alpha(@sel, 0.2);
+}
+
+/* Clock */
+#clock {
+  padding-right: 0px; /* Removes weird space to the right of the clock */
+}
+
+/* ===== CUSTOM MODULES ===== */
+/* Custom power */
+#custom-power:hover {
+  color: #e46876;
+}
+
+#custom-pacman {
+  padding-right: 0;
+}

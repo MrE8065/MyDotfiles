@@ -1,0 +1,16 @@
+{
+  "label" : "suspend",
+  "action" : "systemctl suspend"
+}
+{
+  "label" : "shutdown",
+  "action" : "systemctl poweroff"
+}
+{
+  "label" : "reboot",
+  "action" : "systemctl reboot"
+}
+{
+  "label": "logout",
+  "action": "niri msg action quit"
+}

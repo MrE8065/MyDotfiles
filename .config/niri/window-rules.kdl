@@ -1,0 +1,20 @@
+// Open the Firefox picture-in-picture player as floating by default
+window-rule {
+  // This app-id regular expression will work for both:
+  // - host Firefox ("firefox")
+  // - Flatpak Firefox ("org.mozilla.firefox")
+  match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+  open-floating true
+}
+
+// Fix the Steam notifications position
+window-rule {
+  match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+  default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+  geometry-corner-radius 8
+  clip-to-geometry true // Clip the window to its visual geometry
+}
+

@@ -1,0 +1,41 @@
+clock
+screenshot
+effect-blur=7x5
+effect-vignette=0.5:0.5
+color=C5C9C5
+font="Noto Sans Regular"
+indicator
+indicator-radius=150
+indicator-thickness=10
+
+ring-color=C4B28A
+inside-color=181616
+key-hl-color=7FB4CA
+text-color=F8F8F2
+separator-color=00000000
+line-color=00000000
+
+ring-ver-color=C8C093
+inside-ver-color=181616
+text-ver-color=F8F8F2
+line-ver-color=00000000
+
+ring-wrong-color=E46876
+inside-wrong-color=181616
+text-wrong-color=E46876
+line-wrong-color=00000000
+
+ring-clear-color=8BA4B0
+inside-clear-color=181616
+text-clear-color=8BA4B0
+line-clear-color=00000000
+
+bs-hl-color=8BA4B0
+
+grace=0
+grace-no-mouse
+grace-no-touch
+datestr=%a, %B %e
+timestr=%I:%M %p
+fade-in=0.2
+ignore-empty-password

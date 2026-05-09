@@ -1,0 +1,156 @@
+// This configuration is merged with the default vicinae configuration file, which you can obtain by running the `vicinae config default` command.
+// Every item defined in this file takes precedence over the values defined in the default config or any other imported file.
+//
+// You can make manual edits to this file, however you should keep in mind that this file may be written to by vicinae when a configuration change is made through the GUI.
+// When that happens, any custom comments or formatting will be lost.
+//
+// If you want to maintain a configuration file with your own comments and formatting, you should create a separate file and add it to the 'imports' array.
+//
+// Learn more about configuration at https://docs.vicinae.com/config
+
+{
+   "$schema": "https://vicinae.com/schemas/config.json",
+   "font": {
+      "normal": {
+         "family": "MesloLGM Nerd Font Mono"
+      }
+   },
+   "theme": {
+      "dark": {
+         "name": "kanagawa-dragon",
+         "icon_theme": "oomox-Kanagawa"
+      }
+   },
+   "telemetry": {
+      "system_info": false
+   },
+   "favorites": [
+      "applications:code",
+      "applications:nvim",
+      "applications:onlyoffice-desktopeditors",
+      "applications:steam",
+      "applications:arduino-ide-v2"
+   ],
+   "providers": {
+      "applications": {
+         "entrypoints": {
+            "avahi-discover": {
+               "enabled": false
+            },
+            "bssh": {
+               "enabled": false
+            },
+            "bvnc": {
+               "enabled": false
+            },
+            "qv4l2": {
+               "enabled": false
+            },
+            "qvidcap": {
+               "enabled": false
+            },
+            "thunar-bulk-rename": {
+               "enabled": false
+            },
+            "thunar-settings": {
+               "enabled": false
+            },
+            "uuctl": {
+               "enabled": false
+            },
+            "xgps": {
+               "enabled": false
+            },
+            "xgpsspeed": {
+               "enabled": false
+            }
+         }
+      },
+      "browser-extension": {
+         "enabled": false
+      },
+      "calculator": {
+         "entrypoints": {
+            "refresh-rates": {
+               "enabled": false
+            }
+         }
+      },
+      "core": {
+         "entrypoints": {
+            "about": {
+               "enabled": false
+            },
+            "documentation": {
+               "enabled": false
+            },
+            "keybind-settings": {
+               "enabled": false
+            },
+            "manage-fallback": {
+               "enabled": false
+            },
+            "oauth-token-store": {
+               "enabled": false
+            },
+            "open-default-config": {
+               "enabled": false
+            },
+            "prune-memory": {
+               "enabled": false
+            },
+            "reload-scripts": {
+               "enabled": false
+            },
+            "report-bug": {
+               "enabled": false
+            },
+            "search-builtin-icons": {
+               "enabled": false
+            },
+            "sponsor": {
+               "enabled": false
+            }
+         }
+      },
+      "developer": {
+         "enabled": false
+      },
+      "files": {
+         "entrypoints": {
+            "rebuild-index": {
+               "enabled": false
+            }
+         }
+      },
+      "manage-shortcuts": {
+         "enabled": false
+      },
+      "power": {
+         "enabled": false,
+         "entrypoints": {
+            "hibernate": {
+               "enabled": false
+            },
+            "soft-reboot": {
+               "enabled": false
+            }
+         }
+      },
+      "raycast-compat": {
+         "enabled": false
+      },
+      "scripts": {
+         "enabled": false
+      },
+      "shortcuts": {
+         "enabled": false
+      },
+      "theme": {
+         "enabled": false
+      },
+      "wm": {
+         "enabled": false
+      }
+   }
+}

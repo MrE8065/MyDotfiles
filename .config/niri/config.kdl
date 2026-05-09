@@ -1,0 +1,13 @@
+// The configs are separated into several files for organization
+// They follow the sections in the wiki (https://niri-wm.github.io/niri/Configuration:-Introduction.html#per-section-documentation)
+
+include "input.kdl"
+include "output.kdl"
+include "binds.kdl"
+include "layout.kdl"
+include "miscellaneous.kdl"
+include "window-rules.kdl"
+include "layer-rules.kdl"
+include "animations.kdl"
+include "recent-windows.kdl"
+include "gestures.kdl"

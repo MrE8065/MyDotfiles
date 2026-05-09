@@ -1,0 +1,57 @@
+layout {
+  // Set gaps around windows in logical pixels
+  gaps 0
+  background-color "transparent"
+  center-focused-column "on-overflow"
+  always-center-single-column
+
+  // Widths used by "switch-preset-column-width"
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
+
+  // Default width of new windows
+  // If empty, the windows themselves will decide their initial width
+  default-column-width { proportion 0.5; }
+
+  focus-ring {
+    on
+    // Logical pixels to extend out from windows
+    width 1
+
+    // Color of the ring in inactive monitors
+    //inactive-color "#505050"
+
+    // Color of the ring in active monitor
+    //active-color "#c4b28a"
+    active-color "#393836"
+  }
+
+  // Drop shadows for windows
+  shadow {
+    on
+    // Blur radius
+    softness 20
+    // Expansion
+    spread 5
+    // Offset relative to the window
+    offset x=0 y=5
+    // Color of the shadow
+    color "#0d0c0c"
+  }
+
+  insert-hint {
+    color "#c5c9c550"
+  }
+
+  // Struts shrink the area occupied by windows. You can think of them as kind of outer gaps
+  // They are set in logical pixels
+  struts {
+    left 2
+    right 2
+    top 2
+    bottom 2
+  }
+}

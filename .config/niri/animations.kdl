@@ -1,0 +1,29 @@
+animations {
+  window-open {
+    spring damping-ratio=0.92 stiffness=900 epsilon=0.0001
+  }
+
+  window-close {
+    spring damping-ratio=0.95 stiffness=1000 epsilon=0.0001
+  }
+
+  window-resize {
+    duration-ms 200
+    curve "ease-out-cubic"
+  }
+
+  horizontal-view-movement {
+    duration-ms 300
+    curve "ease-out-cubic"
+  }
+
+  workspace-switch {
+    duration-ms 500
+    curve "ease-out-expo"
+  }
+
+  overview-open-close {
+    duration-ms 300
+    curve "cubic-bezier" 0.6 0 0 1
+  }
+}

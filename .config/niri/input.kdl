@@ -1,0 +1,22 @@
+input {
+  keyboard {
+    xkb {
+      layout "es" // You may want to change this
+    }
+    // Enable numlock on startup
+    numlock
+  }
+
+  touchpad {
+    tap // Click on tap
+    dwt // Disable when typing
+    natural-scroll // Invert the scrolling (move up to go down)
+  }
+
+  // Make the mouse warp to the center of newly created windows
+  warp-mouse-to-focus
+
+  // Focus windows and outputs automatically when moving the mouse into them
+  // Setting mx-scroll-amount="0%" makes it work only on windows already fully on screen
+  focus-follows-mouse max-scroll-amount="0%"
+}

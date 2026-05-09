@@ -1,0 +1,40 @@
+// Environment variables
+environment {
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORM "wayland"
+  _JAVA_AWT_WM_NONREPARENTING "1"
+}
+
+// Things to spawn at startup
+spawn-at-startup "waybar"
+spawn-sh-at-startup "swaybg -m fill -i ~/wallpapers/dragon.png"
+spawn-sh-at-startup "vicinae server"
+spawn-sh-at-startup "~/.config/niri/scripts/idle.sh"
+
+// Disable the "Important Hotkeys" pop-up at startup
+hotkey-overlay {
+  skip-at-startup
+}
+
+// Ask the apps to omit their client-side decorations if possible
+// Additionally, clients will be informed that they are tiled, removing some client-side rounded corners
+// This option will also fix border/focus ring drawing behind some semitransparent windows
+prefer-no-csd
+
+// Path where the screenshots will be saved
+screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
+
+// Cursor settings
+cursor {
+  xcursor-theme "Bibata-Modern-Classic"
+  xcursor-size 24
+  hide-when-typing
+  hide-after-inactive-ms 2000
+}
+
+blur {
+  passes 3
+  offset 3.0
+  noise 0.02
+  saturation 1
+}

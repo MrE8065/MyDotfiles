@@ -1,0 +1,21 @@
+[general]
+import = ["themes/kanagawa_dragon.toml"]
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "MesloLGM Nerd Font Propo"
+style = "Normal"
+
+[font.bold]
+family = "MesloLGM Nerd Font Propo"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGM Nerd Font Propo"
+style = "Italic"
+
+[font.bold_italic]
+family = "MesloLGM Nerd Font Propo"
+style = "Bold Italic"

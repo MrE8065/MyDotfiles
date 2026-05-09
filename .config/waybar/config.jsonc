@@ -1,0 +1,134 @@
+{
+  "layer": "top",
+  "height": 45,
+  "position": "top",
+  "reload_style_on_change": true,
+  "modules-left": [
+    "clock",
+    "wlr/taskbar"
+  ],
+  "modules-center": [
+    "mpris"
+  ],
+  "modules-right": [
+    "tray",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "custom/power"
+  ],
+  "clock": {
+    "format": "{:%I:%M %p} ",
+    "interval": 1,
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "calendar": {
+      "format": {
+        "today": "<span color='#c4b28a'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "shift_up",
+      "on-click": "shift_down"
+    }
+  },
+  "mpris": {
+    "format": "{title} - {artist}",
+    "dynamic-len": 20,
+    "format-paused": "Music paused :(",
+    "title-len": 20,
+    "artist-len": 20,
+    /*"ignored-players": [
+      "firefox"
+    ],*/
+    "tooltip-format": "From: {player}",
+    "on-click": "playerctl previous track",
+    "on-click-middle": "playerctl play-pause",
+    "on-click-right": "playerctl next track"
+  },
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+  },
+  "tray": {
+    "reverse-direction": "true",
+    "icon-size": 14,
+    "spacing": 10
+  },
+  "bluetooth": {
+    "format-on": "󰂯",
+    "format-off": "BT-off",
+    "format-disabled": "󰂲",
+    "format-no-controller": "",
+    "format-connected-battery": "{device_battery_percentage}% 󰂯",
+    "format-alt": "{device_alias} 󰂯",
+    "tooltip-format": "{controller_alias}\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_battery_percentage}%",
+    "on-click": "vicinae vicinae://extensions/Gelei/bluetooth/devices"
+  },
+  "network": {
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}",
+    "on-click": "vicinae vicinae://extensions/dagimg-dot/wifi-commander/scan-wifi"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol"
+  },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "\uDB80\uDCDE",
+      "\uDB80\uDCDF",
+      "\uDB80\uDCE0"
+    ],
+    "on-scroll-up": "brightnessctl -n set 5%+",
+    "on-scroll-down": "brightnessctl -n set 5%-",
+    "on-click": "~/.config/waybar/scripts/night-mode.sh",
+    "tooltip-format": "Screen brightness"
+  },
+  "battery": {
+    "interval": 30,
+    "states": {
+      "good": 95,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{capacity}% {icon}",
+    "format-charging": "{capacity}% 󰂄",
+    "format-plugged": "{capacity}% 󰂄 ",
+    "format-alt": "{time} {icon}",
+    "format-icons": [
+      "󰁻",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂",
+      "󰁹"
+    ]
+  },
+  "custom/power": {
+    "format": "⏻",
+    "tooltip-format": "Open power menu",
+    "on-click": "wlogout -b 4"
+  }
+}

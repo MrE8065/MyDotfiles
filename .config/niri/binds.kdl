@@ -1,0 +1,201 @@
+binds {
+  // Shows a list of important hotkeys
+  Mod+Shift+7 { show-hotkey-overlay; }
+
+  // Binds for running programs
+  Mod+T              hotkey-overlay-title="Open terminal"     { spawn "alacritty"; }
+  Mod+D repeat=false hotkey-overlay-title="Open app launcher" { spawn-sh "vicinae toggle"; }
+  Mod+B              hotkey-overlay-title="Open browser"      { spawn "firefox"; }
+  Mod+E              hotkey-overlay-title="Open file browser" { spawn "nautilus"; }
+  Mod+Period         hotkey-overlay-title="Open emoji picker" { spawn-sh "vicinae vicinae://launch/core/search-emojis"; }
+  Mod+Shift+L        hotkey-overlay-title="Lock the screen"   { spawn "swaylock"; }
+  Mod+Ctrl+Shift+R   hotkey-overlay-title="Refresh waybar"    { spawn-sh "~/.config/waybar/scripts/refresh.sh"; }
+
+  // Volume keys mappings for PipeWire & WirePlumber
+  // allow-when-locked=true makes them work even when the session is locked 
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+
+  // Media keys mapping using playerctl.
+  XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+  XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
+  XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+  XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+
+  // Brightness key mappings for brightnessctl.
+  XF86MonBrightnessUp   allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+
+  // Toggle the Overview
+  // Same as using four-finger swipe up on a touchpad
+  Mod+O repeat=false { toggle-overview; }
+
+  Mod+Q repeat=false { close-window; }
+  
+  // Focus movements
+  Mod+Left  { focus-column-left; }
+  Mod+Down  { focus-window-down; }
+  Mod+Up    { focus-window-up; }
+  Mod+Right { focus-column-right; }
+  Mod+H     { focus-column-left; }
+  Mod+J     { focus-window-down; }
+  Mod+K     { focus-window-up; }
+  Mod+L     { focus-column-right; }
+
+  // Columns/Windows movements
+  Mod+Ctrl+Left  { move-column-left; }
+  Mod+Ctrl+Down  { move-window-down; }
+  Mod+Ctrl+Up    { move-window-up; }
+  Mod+Ctrl+Right { move-column-right; }
+  Mod+Ctrl+H     { move-column-left; }
+  Mod+Ctrl+J     { move-window-down; }
+  Mod+Ctrl+K     { move-window-up; }
+  Mod+Ctrl+L     { move-column-right; }
+
+  // Alternative commands that move across workspaces when reaching
+  // the first or last window in a column.
+  // Mod+J     { focus-window-or-workspace-down; }
+  // Mod+K     { focus-window-or-workspace-up; }
+  // Mod+Ctrl+J     { move-window-down-or-to-workspace-down; }
+  // Mod+Ctrl+K     { move-window-up-or-to-workspace-up; }
+
+  Mod+Home { focus-column-first; }
+  Mod+End  { focus-column-last; }
+  Mod+Ctrl+Home { move-column-to-first; }
+  Mod+Ctrl+End  { move-column-to-last; }
+
+  // Monitor movements
+  Mod+Shift+Left  { focus-monitor-left; }
+  Mod+Shift+Down  { focus-monitor-down; }
+  Mod+Shift+Up    { focus-monitor-up; }
+  Mod+Shift+Right { focus-monitor-right; }
+
+  // Column movements between monitors
+  Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+  Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+  Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+  Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+  Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Shift+Ctrl+Left  { move-window-to-monitor-left; }
+  // ...
+
+  // And you can also move a whole workspace to another monitor:
+  // Mod+Shift+Ctrl+Left  { move-workspace-to-monitor-left; }
+  // ...
+
+  // Workspaces focus
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+
+  // Moving columns between workspaces
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Ctrl+Page_Down { move-window-to-workspace-down; }
+  // ...
+
+  // Moving workspaces
+  Mod+Shift+Page_Down { move-workspace-down; }
+  Mod+Shift+Page_Up   { move-workspace-up; }
+  Mod+Shift+U         { move-workspace-down; }
+  Mod+Shift+I         { move-workspace-up; }
+
+  // Focusing and moving between workspaces with mouse scroll
+  // To avoid scrolling through workspaces really fast, you can use
+  // the cooldown-ms property. The bind will be rate-limited to this value
+  Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+  Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+  Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+  Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+  // Usually scrolling up and down with Shift in applications results in
+  // horizontal scrolling; these binds replicate that.
+  Mod+Shift+WheelScrollDown      { focus-column-right; }
+  Mod+Shift+WheelScrollUp        { focus-column-left; }
+  Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+  Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+  // Workspaces
+  Mod+1 { focus-workspace 1; }
+  Mod+2 { focus-workspace 2; }
+  Mod+3 { focus-workspace 3; }
+  Mod+4 { focus-workspace 4; }
+  Mod+5 { focus-workspace 5; }
+  Mod+6 { focus-workspace 6; }
+  Mod+7 { focus-workspace 7; }
+  Mod+8 { focus-workspace 8; }
+  Mod+9 { focus-workspace 9; }
+  Mod+Ctrl+1 { move-column-to-workspace 1; }
+  Mod+Ctrl+2 { move-column-to-workspace 2; }
+  Mod+Ctrl+3 { move-column-to-workspace 3; }
+  Mod+Ctrl+4 { move-column-to-workspace 4; }
+  Mod+Ctrl+5 { move-column-to-workspace 5; }
+  Mod+Ctrl+6 { move-column-to-workspace 6; }
+  Mod+Ctrl+7 { move-column-to-workspace 7; }
+  Mod+Ctrl+8 { move-column-to-workspace 8; }
+  Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+  // Alternatively, there are commands to move just a single window:
+  // Mod+Ctrl+1 { move-window-to-workspace 1; }
+
+  // Move the focused window in and out of a column.
+  // If the window is alone, they will consume it into the nearby column to the side.
+  // If the window is already in a column, they will expel it out.
+  Mod+BracketLeft  { consume-or-expel-window-left; }
+  Mod+BracketRight { consume-or-expel-window-right; }
+
+  // Consume one window from the right to the bottom of the focused column.
+  Mod+Comma  { consume-window-into-column; }
+  // Expel the bottom window from the focused column to the right.
+  //Mod+Period { expel-window-from-column; }
+
+  // Window/Column width and height presets
+  Mod+R { switch-preset-column-width; }
+  Mod+Shift+R { switch-preset-window-height; }
+  Mod+Ctrl+R { reset-window-height; }
+  
+  // Maximize and fullscreen windows
+  Mod+F { maximize-column; }
+  Mod+Shift+F { fullscreen-window; }
+
+  // Expand the focused column to fill screen space
+  Mod+Ctrl+F { expand-column-to-available-width; }
+
+  // Center single/multiple columns on screen.
+  Mod+C { center-column; }
+  Mod+Ctrl+C { center-visible-columns; }
+
+  // Resize columns width 
+  Mod+Minus { set-column-width "-10%"; }
+  Mod+Equal { set-column-width "+10%"; }
+
+  // Resize windows width.
+  Mod+Shift+Minus { set-window-height "-10%"; }
+  Mod+Shift+Equal { set-window-height "+10%"; }
+
+  // Move the focused window between the floating and the tiling layout.
+  Mod+V       { toggle-window-floating; }
+  Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+  // Toggle tabbed column display mode.
+  Mod+W { toggle-column-tabbed-display; }
+
+  // Screenshots
+  Print      hotkey-overlay-title="Take a screenshot"        { screenshot; }
+  Ctrl+Print hotkey-overlay-title="Take a screen screenshot" { screenshot-screen; }
+  Alt+Print  hotkey-overlay-title="Take a window screenshot" { screenshot-window; }
+
+  // Bind to inhibit keyboark "steal" from remote-desktop or VM apps
+  Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; } 
+}
