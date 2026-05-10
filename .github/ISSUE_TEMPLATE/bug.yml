@@ -1,0 +1,47 @@
+name: 🐛 Bug Report
+description: Report a bug to help improve this repo
+title: "🐛 [Bug]: "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Bug Report
+
+        Thank you for taking the time to report a bug! This helps improve this dotfiles for everyone.
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Bug Severity
+      description: How severe is this bug?
+      options:
+        - "🟢 Low - Minor inconvenience"
+        - "🟠 Medium - Affects usability"
+        - "🔴 High - Fix ASAP"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Describe what you were trying to do when this bug occurred.
+      placeholder: "I was trying to open the app launcher when..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Detailed steps to reproduce the bug
+      placeholder: |
+        1. Open 4 apps
+        2. Lower the volume
+        4. Click the power button
+        5. Error occurs...
+    validations:
+      required: false
