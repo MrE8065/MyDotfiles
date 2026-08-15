@@ -1,40 +1,43 @@
--- NVIM BUILTIN OPTIONS --
+-- UI
+vim.opt.termguicolors = true
+vim.opt.number = true -- line numbers
+vim.opt.relativenumber = true -- relative line numbers
+vim.opt.cursorline = true -- highlight current line
+vim.opt.wrap = false -- don't wrap by default
+vim.opt.scrolloff = 10 -- keep 10 lines verticaly
+vim.opt.sidescrolloff = 10 -- keep 10 lines horizontaly
+vim.opt.signcolumn = "yes" -- always show sign column
+vim.opt.showmatch = true -- highlight matching brackets
+vim.opt.fillchars = { eob = " " } -- hide "~" on empty lines
 
--- Disable the builtin file explorer (Replaced nvim-tree)
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+vim.opt.winborder = "rounded" -- rounded floating windows
+vim.opt.pumborder = "rounded" -- rounded completion windows
 
-local opt = vim.opt
+require("vim._core.ui2").enable({ enable = true }) -- enable modern ui
+vim.opt.cmdheight = 0 -- make the cmdline auto hide
 
--- Lines
-opt.number = true
-opt.relativenumber = true
-opt.cursorline = true
-opt.wrap = false
-opt.scrolloff = 10 -- Keep 10 lines above/below cursor
-opt.sidescrolloff = 10 -- Keep 10 lines to left/right of cursor
+-- INDENT
+vim.opt.tabstop = 2 -- tab width
+vim.opt.shiftwidth = 2 -- indent width
+vim.opt.softtabstop = 2 -- soft tab stop not ta bs on tab/backspace
+vim.opt.expandtab = true -- use spaces instead of tabs
+vim.opt.smartindent = true -- smart auto-indent
+vim.opt.autoindent = true -- copy indent from current line
 
--- Indentation
-opt.tabstop = 2
-opt.shiftwidth = 2
-opt.softtabstop = 2
-opt.expandtab = true
-opt.smartindent = true
-opt.autoindent = true
+-- SEARCH
+vim.opt.ignorecase = true -- case insensitive search
+vim.opt.smartcase = true -- case sensitive if uppercase in string
 
--- Search
-opt.ignorecase = true
-opt.smartcase = true
+-- MISC
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard
+vim.opt.completeopt = "menuone,noinsert,noselect,fuzzy" -- completion options
+vim.opt.undofile = true -- create undo file
+vim.opt.writebackup = false -- don't write to backup file
+vim.opt.swapfile = false -- don't create swapfile
+vim.opt.iskeyword:append("-") -- include "-" in words
+vim.opt.path:append("**") -- include subdirs in search
+vim.opt.mouse = "a" -- mouse mode in all modes
 
--- Splits
-opt.splitbelow = true -- Horizontal splits go below
-opt.splitright = true -- Vertical splits go right
+vim.opt.splitbelow = true -- horizontal splits go below
+vim.opt.splitright = true -- vertical splits go right
 
--- Extras
-opt.termguicolors = true
-opt.signcolumn = "yes"
-opt.clipboard:append("unnamedplus") -- Append to the system clipboard
-opt.swapfile = false
-opt.foldlevelstart = 99 -- Start with all folds open
-opt.winborder = "rounded" -- Apply rounded borders to all floating windows
-opt.fileformat = "unix" -- Set Unix-style EndOfLine
